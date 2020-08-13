@@ -1,0 +1,29 @@
+{
+  "extends": [
+    "airbnb-base",
+    "eslint:recommended"
+  ],
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "plugins": [
+    "compat"
+  ],
+  "rules": {
+    "compat/compat": "error"
+  },
+  "settings": {
+    "targets": [
+      ""
+    ],
+    "polyfills": [
+      ""
+    ]
+  }
+}
