@@ -1,0 +1,15 @@
+{{ form_start(form) }}
+
+
+{{ form_row(form.uploadId) }}
+{{ form_row(form.uploadedBy) }}
+{{ form_row(form.filePath) }}
+{{ form_row(form.fileName) }}
+{{ form_row(form.fileExtension) }}
+{{ form_row(form.fileSize) }}
+{{ form_row(form.isImage) }}
+{{ form_row(form.imageWidth) }}
+{{ form_row(form.imageHeight) }}
+
+<button class="btn btn-success btn-lg btn-block active">{{ button_label|default('Save Record') }}</button>
+{{ form_end(form) }}

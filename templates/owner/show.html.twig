@@ -1,0 +1,184 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - {{ title|default(' Viewer') }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {#	{{ encore_entry_link_tags('') }}#}
+{% endblock %}
+
+{% block body %}
+    <h2 class="h3 mb-3 font-weight-normal">{{ title|default(' Viewer') }}</h2>
+    <h1>Person</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ person.id }}</td>
+        </tr>
+        <tr>
+            <th>NameDisplay</th>
+            <td>{{ person.nameDisplay }}</td>
+        </tr>
+        <tr>
+            <th>NameFirst</th>
+            <td>{{ person.nameFirst }}</td>
+        </tr>
+        <tr>
+            <th>NameMiddle</th>
+            <td>{{ person.nameMiddle }}</td>
+        </tr>
+        <tr>
+            <th>NameLast</th>
+            <td>{{ person.nameLast }}</td>
+        </tr>
+        <tr>
+            <th>NameSuffix</th>
+            <td>{{ person.nameSuffix }}</td>
+        </tr>
+        <tr>
+            <th>PhoneHome</th>
+            <td>{{ person.phoneHome }}</td>
+        </tr>
+        <tr>
+            <th>PhoneMobile</th>
+            <td>{{ person.phoneMobile }}</td>
+        </tr>
+        <tr>
+            <th>PhoneFax</th>
+            <td>{{ person.phoneFax }}</td>
+        </tr>
+        <tr>
+            <th>PhoneWork</th>
+            <td>{{ person.phoneWork }}</td>
+        </tr>
+
+        <tr>
+            <th>Email</th>
+            <td>{{ person.email }}</td>
+        </tr>
+        <tr>
+            <th>MailingAddressLine1</th>
+            <td>{{ person.mailingAddressLine1 }}</td>
+        </tr>
+        <tr>
+            <th>MailingAddressLine2</th>
+            <td>{{ person.mailingAddressLine2 }}</td>
+        </tr>
+        <tr>
+            <th>MailingAddressCity</th>
+            <td>{{ person.mailingAddressCity }}</td>
+        </tr>
+        <tr>
+            <th>MailingAddressState</th>
+            <td>{{ person.mailingAddressState }}</td>
+        </tr>
+        <tr>
+            <th>MailingAddressZipCode</th>
+            <td>{{ person.mailingAddressZipCode }}</td>
+        </tr>
+        <tr>
+            <th>MailingAddressCountry</th>
+            <td>{{ person.mailingAddressCountry }}</td>
+        </tr>
+        <tr>
+            <th>PhysicalAddressLine1</th>
+            <td>{{ person.physicalAddressLine1 }}</td>
+        </tr>
+        <tr>
+            <th>PhysicalAddressLine2</th>
+            <td>{{ person.physicalAddressLine2 }}</td>
+        </tr>
+        <tr>
+            <th>PhysicalAddressCity</th>
+            <td>{{ person.physicalAddressCity }}</td>
+        </tr>
+        <tr>
+            <th>PhysicalAddressState</th>
+            <td>{{ person.physicalAddressState }}</td>
+        </tr>
+        <tr>
+            <th>PhysicalAddressZipCode</th>
+            <td>{{ person.physicalAddressZipCode }}</td>
+        </tr>
+        <tr>
+            <th>Password</th>
+            <td>{{ person.password }}</td>
+        </tr>
+        <tr>
+            <th>PasswordRecoveryKey</th>
+            <td>{{ person.passwordRecoveryKey }}</td>
+        </tr>
+        <tr>
+            <th>PasswordRecoveryDate</th>
+            <td>{{ person.passwordRecoveryDate ? person.passwordRecoveryDate|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>PasswordRecoveryIpAddress</th>
+            <td>{{ person.passwordRecoveryIpAddress }}</td>
+        </tr>
+        <tr>
+            <th>IpAddress</th>
+            <td>{{ person.ipAddress }}</td>
+        </tr>
+        <tr>
+            <th>Roles</th>
+            <td>{{ person.roles ? person.roles|json_encode : '' }}</td>
+        </tr>
+        <tr>
+            <th>VerificationKey</th>
+            <td>{{ person.verificationKey }}</td>
+        </tr>
+        <tr>
+            <th>VerificationDate</th>
+            <td>{{ person.verificationDate ? person.verificationDate|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>VerificationIpAddress</th>
+            <td>{{ person.verificationIpAddress }}</td>
+        </tr>
+        <tr>
+            <th>UpdatedAt</th>
+            <td>{{ person.updatedAt ? person.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>CreatedAt</th>
+            <td>{{ person.createdAt ? person.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>HasStartedRegistration</th>
+            <td>{{ person.hasStartedRegistration ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+            <th>IsActive</th>
+            <td>{{ person.isActive ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+            <th>IsVerified</th>
+            <td>{{ person.isVerified ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+            <th>IsRegistered</th>
+            <td>{{ person.isRegistered ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+            <th>AgreedToTermsAt</th>
+            <td>{{ person.agreedToTermsAt ? person.agreedToTermsAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>TermsId</th>
+            <td>{{ person.termsId }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('crud_person_index') }}" class="btn btn-primary btn-lg btn-block active" role="button"
+       aria-disabled="true">Return to List</a>
+
+
+    <a href="{{ path('crud_person_edit', {'id': person.id}) }}"
+       class="btn btn-danger btn-lg btn-block active" role="button" aria-disabled="true">Edit Record</a>
+
+    {{ include('person/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,123 @@
+
+
+
+
+
+#	Retrospect the existing database
+php bin/console doctrine:mapping:import "App\Entity" annotation --path=src/Entity -vvv --force;
+php bin/console make:entity --regenerate App -vvv;
+
+
+
+			
+
+
+#Make a CRUD tool
+php bin/console make:crud Person;
+
+
+
+
+
+
+
+
+composer dump-autoload --optimize --no-dev --classmap-authoritative
+
+
+
+
+
+php bin/console make:form PartialSignupStep1Type;
+
+npm install webpack file-loader css-loader sass-loader node-sass --save-dev;
+npm install font-awesome --save;
+
+
+
+
+
+
+# Make System.
+----------------------------------------
+##  Make sure this is in your composer file.   -->>    	composer require --dev symfony/maker-bundle
+														composer require --dev doctrine/doctrine-fixtures-bundle
+php bin/console make:user  (User Person here to create the Entity.)
+
+
+
+
+php bin/console make:fixtures    Enter PersonFixtures
+
+
+			
+			
+			
+			
+
+# config/packages/security.yaml
+security:
+    # ...
+
+    encoders:
+        # use your user class name here
+        App\Entity\Person:
+            # bcrypt or sodium are recommended
+            # sodium is more secure, but requires PHP 7.2 or the Sodium extension
+            algorithm: auto
+            cost: 12
+
+
+
+
+# config/packages/security.yaml
+security:
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: ~
+			
+
+php bin/console make:controller AdminController
+
+Use in Templates
+{% if is_granted('ROLE_ADMIN') %}
+    <a href="...">Delete</a>
+{% endif %}
+
+
+Fetch the User in a Template¶
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    <p>Email: {{ app.user.email }}</p>
+{% endif %}
+
+
+php bin/console make:auth
+
+
+
+php bin/console make:registration-form
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+_________________________________________________________________________
+#	If you need to re-introspect the database
+php bin/console doctrine:mapping:import "App\Entity" annotation --path=src/Import -vvv --force;
+

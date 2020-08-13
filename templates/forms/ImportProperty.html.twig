@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            {{ form_start(form) }}
+            {{ include('forms/blocks/AccountNumbers.html.twig') }}
+            {{ include('forms/blocks/ImportCredentials.html.twig') }}
+            {{ include('forms/blocks/NameFormalCompany.html.twig') }}
+            {{ include('forms/blocks/NamePerson.html.twig') }}
+            {{ include('forms/blocks/PhonesPersonal.html.twig') }}
+            {{ include('forms/blocks/AddressProperty.html.twig') }}
+            {{ include('forms/blocks/AddressMailing.html.twig') }}
+            {{ include('forms/blocks/County.html.twig') }}
+            {{ include('forms/blocks/LegalDescription-LotBlockSubdivision.html.twig') }}
+            {{ include('forms/blocks/LegalDescription.html.twig') }}
+            {{ include('forms/blocks/ImportOwnershipStartDate.twig') }}
+            {{ include('forms/blocks/ButtonSave.html.twig') }}
+            {{ form_rest(form) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>

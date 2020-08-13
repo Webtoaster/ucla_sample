@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            {{ form_start(form) }}
+            {{ include('forms/blocks/NamePerson.html.twig') }}
+            {{ include('forms/blocks/RegistrationAddress.html.twig') }}
+            {{ include('forms/blocks/RegistrationContact.html.twig') }}
+            {{ include('forms/blocks/RegistrationSecurity.html.twig') }}
+            {{ include('forms/blocks/EmployeeDetails.html.twig') }}
+            {{ form_widget(form.companyId) }}
+            {{ form_widget(form.associationId) }}
+            {{ include('forms/blocks/ButtonSave.html.twig') }}
+            {{ form_rest(form) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>

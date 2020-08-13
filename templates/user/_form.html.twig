@@ -1,0 +1,34 @@
+{{ form_start(form) }}
+
+
+
+{{ form_row(form.id) }}
+{{ form_row(form.nameDisplay) }}
+{{ form_row(form.nameFirst) }}
+{{ form_row(form.nameMiddle) }}
+{{ form_row(form.nameLast) }}
+{{ form_row(form.nameSuffix) }}
+{{ form_row(form.phoneHome) }}
+{{ form_row(form.phoneMobile) }}
+{{ form_row(form.phoneFax) }}
+{{ form_row(form.phoneWork) }}
+{{ form_row(form.phoneWorkExtension) }}
+{{ form_row(form.email) }}
+{{ form_row(form.roles) }}
+{{ form_row(form.mailingAddressLine1) }}
+{{ form_row(form.mailingAddressLine2) }}
+{{ form_row(form.mailingAddressCity) }}
+{{ form_row(form.mailingAddressState) }}
+{{ form_row(form.mailingAddressZipCode) }}
+{{ form_row(form.mailingAddressCountry) }}
+{{ form_row(form.physicalAddressLine1) }}
+{{ form_row(form.physicalAddressLine2) }}
+{{ form_row(form.physicalAddressCity) }}
+{{ form_row(form.physicalAddressState) }}
+{{ form_row(form.physicalAddressZipCode) }}
+{{ form_row(form.verificationDate) }}
+{{ form_row(form.isVerified) }}
+{{ form_row(form.isRegistered) }}
+
+<button class="btn btn-success btn-lg btn-block active">{{ button_label|default('Save Record') }}</button>
+{{ form_end(form) }}

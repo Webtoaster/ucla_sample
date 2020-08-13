@@ -1,0 +1,29 @@
+<table class="table table-striped table-sm small">
+    {% if import.nameFormal is not empty %}
+        <tr class="border-0">
+            <th class="text-nowrap">Name Formal:</th>
+            <td class="text-nowrap">{{ import.nameFormal }}</td>
+        </tr>
+    {% endif %}
+    {% if import.nameFirst is not empty or
+        import.nameMiddle is not empty or
+        import.nameLast is not empty or
+        import.nameSuffix is not empty %}
+        <tr class="border-0">
+            <th class="text-nowrap">First Name:</th>
+            <td class="text-nowrap">{{ import.nameFirst }}</td>
+        </tr>
+        <tr class="border-0">
+            <th class="text-nowrap">Middle Name</th>
+            <td class="text-nowrap">{{ import.nameMiddle }}</td>
+        </tr>
+        <tr class="border-0">
+            <th class="text-nowrap">Last Name</th>
+            <td class="text-nowrap">{{ import.nameLast }}</td>
+        </tr>
+        <tr class="border-0">
+            <th class="text-nowrap">Suffix</th>
+            <td class="text-nowrap">{{ import.nameSuffix }}</td>
+        </tr>
+    {% endif %}
+</table>

@@ -1,0 +1,143 @@
+cd /shared/httpd;
+composer self-update;
+composer create-project symfony/website-skeleton crud.election2/;
+cd crud.election2/;
+mkdir assets;
+cp -rf /shared/httpd/notes ./;
+composer update;
+
+; php -S 127.0.0.1:8000 -t public; 
+
+
+
+composer require symfony/flex;
+composer require admin mailer server annotations api server annotations asset orm-pack twig logger mailer form security translation validator assetic-bundle;
+composer require --dev dotenv maker-bundle orm-fixtures profiler phpunit;
+composer require symfony/apache-pack;
+composer require symfony/webpack-encore-bundle;
+composer require easycorp/easy-log-handler dump;
+
+
+composer require symfony/dotenv
+
+
+
+composer require doctrine/doctrine-bundle 
+composer require doctrine/orm;
+
+
+
+composer update;
+
+
+
+
+; If you are going to re-run the composer install.
+;rm -rf vendor/*;
+;composer install;
+
+
+
+
+
+
+npm init;
+npm install @symfony/webpack-encore --save-dev
+npm install;
+
+npm i -D @babel/core gulp gulp-cli grunt grunt-cli gulp grunt-contrib-jshint less sass;
+su npm i -g @babel/core less sass;
+
+npm i -D jquery tooltip.js bootstrap @fortawesome/fontawesome-free;
+npm i -D webpack-notifier copy-webpack-plugin;
+
+
+yarn encore dev;
+
+
+
+
+rm -rf vendor/*;
+composer install;
+
+
+https://iu1.talentbankonline.com/tb6/ci/aor/9956106-9cbeffcff715644ac6d2a0bc354faf591f8f07337b1c84f0df02b2a3b54bb5fe 
+
+
+--------------------------------------------
+
+
+
+
+npm i -D jquery postcss-loader autoprefixer webpack webpack-cli ansi-regex webpack-dev-server html-webpack-plugin postcss-loader sass-loader node-sass path prop-types;
+
+
+
+
+; Babel Modules. 
+npm i -D @babel/preset-react @babel/cli @babel/core @babel/preset-flow @babel/eslint-plugin-development @babel/plugin-proposal-class-properties styled-jsx/babel @babel/plugin-proposal-export-namespace-from @babel/plugin-proposal-numeric-separator @babel/plugin-transform-modules-commonjs @babel/plugin-transform-runtime @babel/preset-env @babel/preset-flow @babel/register @babel/runtime babel-eslint babel-jest babel-loader babel-plugin-transform-charcodes browserify @babel/preset-env enhanced-resolve;
+
+
+
+
+
+react-dom 
+
+
+npm i -D charcodes eslint warnings-to-errors-webpack-plugin webpack webpack-dependency-suite webpack-stream react-dom prop-types
+
+
+yarn encore dev
+yarn add postcss-loader autoprefixer --dev
+yarn add react react-dom prop-types;
+
+yarn install
+yarn encore dev
+yarn add postcss-loader autoprefixer --dev
+
+
+
+composer require nelmio/alice
+
+composer require snc/redis-bundle
+composer require doctrine/annotations
+composer require doctrine/doctrine-bundle
+composer require doctrine/doctrine-fixtures-bundle
+composer require symfony/debug
+composer require symfony/acl-bundle
+composer require api-platform/admin-pack
+
+
+
+
+composer require assetic-bundle;
+composer require doctrine/annotations;
+composer require doctrine/doctrine-bundle;
+composer require doctrine/doctrine-fixtures-bundle;
+composer require doctrine/doctrine-migrations-bundle;
+composer require dump;
+composer require friendsofphp/php-cs-fixer;
+
+composer require phpunit/phpunit;
+composer require swiftmailer-bundle;
+composer require var-exporter;
+composer require web-profiler-bundle;
+composer require webpack-encore-bundle;
+composer require workflow;
+composer require assetic;
+
+
+
+composer remove javiereguiluz/easyadmin-bundle;
+composer require easycorp/easyadmin-bundle;
+composer remove symfony/webpack-encore-pack;
+composer require encore;
+composer remove --dev phpunit/phpunit;
+composer require --dev phpunit;
+
+
+
+composer require server;
+
+
+

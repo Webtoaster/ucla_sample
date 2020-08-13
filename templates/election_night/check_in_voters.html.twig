@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% if title is not defined %}
+    {% set page_title = 'Voter Checkin' %}
+{% else %}
+    {% set page_title = title %}
+{% endif %}
+
+{% block title %}{{ parent() }} - {{ page_title }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {#	{{ encore_entry_link_tags('') }}#}
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="h3 mb-3 font-weight-normal">{{ page_title }}</h2>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {#	{{ encore_entry_script_tags('') }}#}
+{% endblock %}

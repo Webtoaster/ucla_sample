@@ -1,0 +1,15 @@
+NPM Installs
+
+Globals
+npm i -g popper
+npm i -g bootstrap
+
+
+
+
+
+
+
+Locals
+npm i -D popper
+npm i -D bootstrap

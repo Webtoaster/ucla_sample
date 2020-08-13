@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+
+{% if title is not defined %}
+    {% set page_title = 'Company Viewer' %}
+{% else %}
+    {% set page_title = title %}
+{% endif %}
+
+{% block title %}{{ parent() }} - {{ page_title }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {#	{{ encore_entry_link_tags('') }}#}
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="h3 mb-3 font-weight-normal">{{ page_title }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Company Name:</th>
+            <td>{{ company.nameFormal }}</td>
+        </tr>
+
+
+        {% if company.physicalAddressLine1 is not empty %}
+            <tr>
+                <th>Physical Address:</th>
+                <td>
+                    {{ company.physicalAddressLine1 }}
+                    {% if company.physicalAddressLine1 is not empty %}
+                        {{ company.physicalAddressLine2 }}<br/>
+                    {% endif %}
+                    {{ company.physicalAddressCity }}
+                    , {{ company.physicalAddressState }} {{ company.physicalAddressZipCode }}
+
+
+                    {% if company.physicalAddressLine1 is not empty %}
+                        <br/>
+                        <a href="https://www.google.com/maps/search/?api=1&query={{ company.physicalAddressLine1|url_encode }}{{ ' '|url_encode }}{{ company.physicalAddressLine2|url_encode }}{{ ' '|url_encode }}{{ ' '|url_encode }}{{ company.physicalAddressCity|url_encode }}{{ ','|url_encode }}{{ company.physicalAddressState|url_encode }}{{ ' '|url_encode }}{{ company.physicalAddressZipCode|url_encode }}"
+                           target="external_company_map">Map It!</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endif %}
+
+        {% if company.mailingAddressLine1 is not empty %}
+            <tr>
+                <th>Mailing Address:</th>
+                <td>
+                    {{ company.mailingAddressLine1 }}
+                    {% if company.mailingAddressLine1 is not empty %}
+                        {{ company.mailingAddressLine2 }}<br/>
+                    {% endif %}
+                    {{ company.mailingAddressCity }}
+                    , {{ company.mailingAddressState }} {{ company.mailingAddressZipCode }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <th>Mailing Address:</th>
+                <td>
+                    {{ company.physicalAddressLine1 }}
+
+                    {% if company.physicalAddressLine1 is not empty %}
+                        {{ company.physicalAddressLine2 }}<br/>
+                    {% endif %}
+
+                    {{ company.physicalAddressCity }}, {{ company.physicalAddressState }} {{ company.physicalAddressZipCode }}
+
+                    {% if company.physicalAddressLine1 is not empty %}
+                        <br/>
+                        <a href="https://www.google.com/maps/search/?api=1&query={{ company.physicalAddressLine1|url_encode }}{{ ' '|url_encode }}{{ company.physicalAddressLine2|url_encode }}{{ ' '|url_encode }}{{ ' '|url_encode }}{{ company.physicalAddressCity|url_encode }}{{ ','|url_encode }}{{ company.physicalAddressState|url_encode }}{{ ' '|url_encode }}{{ company.physicalAddressZipCode|url_encode }}"
+                           target="external_company_map">Map It!</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endif %}
+        {% if company.billingAddressLine1 is not empty %}
+            <tr>
+                <th>Billing Address:</th>
+                <td>
+                    {{ company.billingAddressLine1 }}
+                    {% if company.billingAddressLine1 is not empty %}
+                        {{ company.billingAddressLine2 }}<br/>
+                    {% endif %}
+                    {{ company.billingAddressCity }}
+                    , {{ company.billingAddressState }} {{ company.billingAddressZipCode }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <th>Billing Address:</th>
+                <td>A Billing Address is not on file.&nbsp; Use the Physical Address in lieu of a Billing Address.</td>
+            </tr>
+        {% endif %}
+        <tr>
+            <th>Facsimile Number:</th>
+            <td><a href="tel:{{ company.phoneFax }}">{{ company.phoneFax }}</a></td>
+        </tr>
+        <tr>
+            <th>Office Number:</th>
+            <td><a href="tel:{{ company.phoneWork }}">{{ company.phoneWork }}</a></td>
+        </tr>
+        <tr>
+            <th>Website Address:</th>
+            <td>
+                {% if company.url is not empty %}
+                    <a href="{{ company.url }}">{{ company.url }}</a>
+                {% else %}
+                    No Website Address
+                {% endif %}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    {% if is_granted('ROLE_EDIT_COMPANY') %}
+        <a href="{{ path('company_edit', {'companyId': company.companyId}) }}">Edit this Company</a>
+        <br/><br/>
+    {% endif %}
+
+    {% if is_granted('ROLE_COMPANY') %}
+        <a href="{{ path('company_control_panel') }}" class="btn btn-primary btn-lg btn-block active" role="button"
+           aria-disabled="true">Return to the
+            Company Control Panel.</a>
+        <br/><br/>
+    {% endif %}
+
+    {% if is_granted('ROLE_DELETE_COMPANY')  and  company.personId != app.user.id %}
+        {{ include('company/_delete_form.html.twig') }}
+    {% endif %}
+
+{% endblock %}

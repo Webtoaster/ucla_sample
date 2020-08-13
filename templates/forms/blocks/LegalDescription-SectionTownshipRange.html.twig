@@ -1,0 +1,7 @@
+<fieldset>
+    {#    TODO We need to make this display both Lot Block Subdivision and Sect Township and Range Later.#}
+    <legend class="legend">{{ Legend|default('Section, Township & Range') }}</legend>
+    {{ form_row(form.sectionTownshipRange.section) }}
+    {{ form_row(form.sectionTownshipRange.township) }}
+    {{ form_row(form.sectionTownshipRange.range) }}
+</fieldset>

@@ -1,0 +1,62 @@
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('ui_election') }}
+{% endblock %}
+<h5>Election Night!</h5>
+<ul>
+    {% if is_granted('ROLE_ELECTION_VOTER_CHECK_IN') %}
+        <li><a href="{{ url('app_home') }}"
+               data-trigger="hover"
+               title=""
+               data-content="">Check-In Voters</a>
+        </li>
+    {% endif %}
+    {#	{% if is_granted('ROLE_ELECTION_PRINT_BALLOT') %}#}
+    {#	<li><a href="{{ url('app_home') }}"#}
+    {#	       data-trigger="hover"#}
+    {#	       title=""#}
+    {#	       data-content="">Issue Ballot</a>#}
+    {#	</li>#}
+    {#	{% endif %}#}
+
+
+    {% if is_granted('ROLE_ELECTION_PROXY_RECEIVE') %}
+        <li><a href="{{ url('app_home') }}"
+               data-trigger="hover"
+               title=""
+               data-content="">Check-In Proxies</a>
+        </li>
+    {% endif %}
+    {#	{% if is_granted('ROLE_ELECTION_PROXY_REVOKE') %}#}
+    {#	<li><a href="{{ url('app_home') }}"#}
+    {#	       data-trigger="hover"#}
+    {#	       title=""#}
+    {#	       data-content="">Revoke Proxies</a>#}
+    {#	</li>#}
+    {#	{% endif %}#}
+    {#	{% if is_granted('ROLE_ELECTION_PROXY_RECONCILE') %}#}
+    {#	<li><a href="{{ url('app_home') }}"#}
+    {#	       data-trigger="hover"#}
+    {#	       title=""#}
+    {#	       data-content="">Reconcile Proxies</a>#}
+    {#	</li>#}
+    {#	{% endif %}#}
+    {% if is_granted('ROLE_ELECTION_END') %}
+        <li><a href="{{ url('app_home') }}"
+               data-trigger="hover"
+               title=""
+               data-content="">Close Poll</a>
+        </li>
+    {% endif %}
+    {% if is_granted('ROLE_BALLOT_COUNT') %}
+        <li><a href="{{ url('app_home') }}"
+               data-trigger="hover"
+               title=""
+               data-content="">Count Ballots</a>
+        </li>
+    {% endif %}
+</ul>
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('app_election') }}
+{% endblock %}

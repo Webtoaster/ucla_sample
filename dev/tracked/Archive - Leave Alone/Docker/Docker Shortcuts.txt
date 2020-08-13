@@ -1,0 +1,52 @@
+
+
+PHP_IDE_CONFIG=serverName=symfony-demo
+XDEBUG_CONFIG=remote_host=192.168.1.102 remote_port=9001
+
+
+
+
+DOCKER DOCKER DOCKER
+DOCKER DOCKER DOCKER
+DOCKER DOCKER DOCKER
+DOCKER DOCKER DOCKER
+DOCKER DOCKER DOCKER
+
+
+3.4.1. Stop all container
+docker-compose stop
+
+docker-compose rm -f
+
+3.4.2. Restart all container
+docker-compose stop;
+docker-compose rm -f;
+docker-compose up -d httpd php mysql memcd;
+
+
+docker-compose up -d  php mysql memcd;
+.\shell.bat;
+
+docker-compose rm -f;
+docker-compose up -d php bind httpd mysql memcd redis blackfire;
+
+
+
+
+
+
+
+
+
+
+Check DNS 
+ping -c1 dev.powerdumper.dev
+
+
+
+roave/security-advisories
+
+
+
+
+

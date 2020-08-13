@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add a New Association{% endblock %}
+
+{% block body %}
+
+
+
+
+    {% if heading_company is defined %}
+        <h2>{{ heading_company }}</h2>
+    {% else %}
+        <h2>Company Information</h2>
+    {% endif %}
+
+    {{ form_start(form) }}
+
+    {{ include('chunks/blocks/names/_form_name_company.html.twig') }}
+
+    {% if form.children['physicalAddress'] is defined %}
+        {{ include('chunks/blocks/address_physical/_form_address_physical.html.twig') }}
+    {% endif %}
+
+    {% if form.children['mailingAddress'] is defined %}
+        {{ include('chunks/blocks/address_mailing/_form_address_mailing.html.twig') }}
+    {% endif %}
+
+    {% if form.children['billingAddress'] is defined %}
+        {{ include('chunks/blocks/address_billing/_form_address_billing.html.twig') }}
+    {% endif %}
+
+    {{ include('chunks/blocks/phone_numbers/_form_phones_work.html.twig') }}
+
+    {{ include('chunks/blocks/address_url/_form_url.html.twig') }}
+
+    {{ include('chunks/blocks/_form_section_number_of_homes_and_subsections.html.twig') }}
+
+    {% if form.children['save_and_add'] is defined %}
+        {{ form_row(form.save_and_add.save_and_add) }}
+    {% endif %}
+
+    {% if form.children['save'] is defined %}
+        {{ form_row(form.save.save) }}
+    {% endif %}
+
+    {{ form_end(form) }}
+
+{% endblock %}
+
+
+
+

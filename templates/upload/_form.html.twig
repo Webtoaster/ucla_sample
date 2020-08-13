@@ -1,0 +1,7 @@
+{{ form_start(form) }}
+
+    {{ form_row(form.dataFile, {attr: {'placeholder': 'Select your Data File.'}}) }}
+    {{ form_row(form.save.save) }}
+
+{#    <button class="btn btn-success btn-lg btn-block active">{{ button_label|default('Save Record') }}</button>#}
+{{ form_end(form) }}

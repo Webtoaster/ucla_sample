@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% set local_title = 'Edit Association' %}
+
+{% block title %}{{ parent() }} - {{ title|default(local_title) }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {#	{{ encore_entry_link_tags('') }}#}
+{% endblock %}
+
+{% block body %}
+
+    <h1 class="h3 mb-3 font-weight-normal">{{ title|default(local_title) }}</h1>
+
+    {{ include('forms/Company.html.twig') }}
+
+
+    {% if is_granted('ROLE_COMPANY') %}
+        <a href="{{ path('company_control_panel') }}" class="btn btn-primary btn-lg btn-block active" role="button"
+           aria-disabled="true">Return to the
+            Company Control Panel.</a>
+        <br/><br/>
+    {% endif %}
+
+    {% if is_granted('ROLE_DELETE_COMPANY')  and  company.personId != app.user.id %}
+        {{ include('company/_delete_form.html.twig') }}
+    {% endif %}
+
+
+
+
+    {#    {{ include('company/_form.html.twig', {'button_label': 'Update Record'}) }}#}
+    {#    <a href="{{ path('crud_company_index') }}" class="btn btn-primary btn-lg btn-block active" role="button" aria-disabled="true">Return to List</a>
+#}
+    {#    {{ include('company/_delete_form.html.twig') }}#}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {#	{{ encore_entry_script_tags('') }}#}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Voter{% endblock %}
+
+{% block body %}
+    <h1>Edit Voter</h1>
+
+    {{ include('voter/_form.html.twig', {'button_label': 'Update Record'}) }}
+
+    <a href="{{ path('crud_voter_index') }}" class="btn btn-primary btn-lg btn-block active" role="button"
+       aria-disabled="true">Return to List</a>
+
+
+    {{ include('voter/_delete_form.html.twig') }}
+{% endblock %}

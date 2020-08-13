@@ -1,0 +1,11 @@
+<fieldset>
+    <legend class="legend">{{ Legend|default('Election Options') }}</legend>
+    {{ form_row(form.allowProxyVoting) }}
+    {{ form_row(form.allowInPersonVoting) }}
+    {{ form_row(form.allowWriteInCandidates) }}
+    {{ form_row(form.allowProxyDirected) }}
+    {{ form_row(form.allowProxyNondirected) }}
+    {{ form_row(form.allowProxyRevocation) }}
+    {{ form_row(form.allowMailInBallots) }}
+    {{ form_row(form.allowPublicResults) }}
+</fieldset>

@@ -1,0 +1,33 @@
+{# This is a list of proxies that have been checked into the desk on election night. #}
+{# The Variable name is Proxies #}
+
+
+<div class="container-fluid">
+
+
+	{% for proxy in proxies %}
+		{# This probably needs to be a form where up to one can be kept by the voter.#}
+		{#    So, if there is a proxy dated 03/06 and then a second one that is dated 03/07 then the voter can #}
+		{#    choose that one they want to keep or something then they can keep that one proxy. #}
+		<div class="row">
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+		</div>
+	{% endfor %}
+
+
+	<div class="row">
+		<div class="col"><a href="">Keep Most Recent Proxy(s)</a></div>
+		<div class="col"><a href="">Revoke All Proxy(s)</a></div>
+	</div>
+
+
+
+
+
+
+</div>

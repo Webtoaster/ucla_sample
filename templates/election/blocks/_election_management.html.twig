@@ -1,0 +1,34 @@
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('ui_election') }}
+{% endblock %}
+<h5>Election Management</h5>
+<ul>
+    <li><a href="{{ url('app_home') }}"
+           data-toggle="popover"
+           title=""
+           data-content="">Manage Election</a>
+    </li>
+    <li><a href="{{ url('app_home') }}"
+           data-trigger="hover"
+           title=""
+           data-content="">Manage Ratifications</a>
+    </li>
+    <li><a href="{{ url('app_home') }}"
+           data-trigger="hover"
+           title=""
+           data-content="">Manage Races</a>
+    </li>
+    <li><a href="{{ url('app_home') }}"
+           data-trigger="hover"
+           title=""
+           data-content="">Manage Candidates</a>
+    </li>
+
+</ul>
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('app_election') }}
+{% endblock %}
+
+

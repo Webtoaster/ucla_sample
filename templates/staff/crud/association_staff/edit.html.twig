@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit AssociationStaff{% endblock %}
+
+{% block body %}
+    <h1>Edit AssociationStaff</h1>
+
+    {{ include('association_staff/_form.html.twig', {'button_label': 'Update Record'}) }}
+
+    <a href="{{ path('crud_association_staff_index') }}" class="btn btn-primary btn-lg btn-block active" role="button"
+       aria-disabled="true">Return to
+        List</a>
+
+
+    {{ include('association_staff/_delete_form.html.twig') }}
+{% endblock %}

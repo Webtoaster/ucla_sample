@@ -1,0 +1,149 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Election{% endblock %}
+
+{% block body %}
+    <h1>Election</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>ElectionId</th>
+            <td>{{ election.electionId }}</td>
+        </tr>
+        <tr>
+            <th>ElectionNameHeading</th>
+            <td>{{ election.electionNameHeading }}</td>
+        </tr>
+        <tr>
+            <th>ElectionNameSubheading</th>
+            <td>{{ election.electionNameSubheading }}</td>
+        </tr>
+        <tr>
+            <th>UrlElection</th>
+            <td>{{ election.urlElection }}</td>
+        </tr>
+        <tr>
+            <th>HtmlElectionInformation</th>
+            <td>{{ election.htmlElectionInformation }}</td>
+        </tr>
+        <tr>
+            <th>BallotPhysicalAddressLine1</th>
+            <td>{{ election.physicalAddressLine1 }}</td>
+        </tr>
+        <tr>
+            <th>BallotPhysicalAddressLine2</th>
+            <td>{{ election.physicalAddressLine2 }}</td>
+        </tr>
+        <tr>
+            <th>BallotPhysicalAddressCity</th>
+            <td>{{ election.physicalAddressCity }}</td>
+        </tr>
+        <tr>
+            <th>BallotPhysicalAddressState</th>
+            <td>{{ election.physicalAddressState }}</td>
+        </tr>
+        <tr>
+            <th>BallotPhysicalAddressZipCode</th>
+            <td>{{ election.physicalAddressZipCode }}</td>
+        </tr>
+        <tr>
+            <th>DisplayPhysicalAddress</th>
+            <td>{{ election.displayPhysicalAddress ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+            <th>BallotMailingAddressLine1</th>
+            <td>{{ election.mailingAddressLine1 }}</td>
+        </tr>
+        <tr>
+            <th>BallotMailingAddressLine2</th>
+            <td>{{ election.mailingAddressLine2 }}</td>
+        </tr>
+        <tr>
+            <th>BallotMailingAddressCity</th>
+            <td>{{ election.mailingAddressCity }}</td>
+        </tr>
+        <tr>
+            <th>BallotMailingAddressState</th>
+            <td>{{ election.mailingAddressState }}</td>
+        </tr>
+        <tr>
+            <th>BallotMailingAddressZipCode</th>
+            <td>{{ election.mailingAddressZipCode }}</td>
+        </tr>
+        <tr>
+            <th>DisplayMailingAddress</th>
+            <td>{{ election.displayMailingAddress ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+            <th>VotesMin</th>
+            <td>{{ election.votesMin }}</td>
+        </tr>
+        <tr>
+            <th>VotesMax</th>
+            <td>{{ election.votesMax }}</td>
+        </tr>
+        <tr>
+            <th>DateStart</th>
+            <td>{{ election.dateStart ? election.dateStart|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>DateEnd</th>
+            <td>{{ election.dateEnd ? election.dateEnd|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>VotersTotal</th>
+            <td>{{ election.votersTotal }}</td>
+        </tr>
+        <tr>
+            <th>VotersRequiredElection</th>
+            <td>{{ election.votersRequiredElection }}</td>
+        </tr>
+        <tr>
+            <th>VotersRequiredRatification</th>
+            <td>{{ election.votersRequiredRatification }}</td>
+        </tr>
+        <tr>
+            <th>ElectionState</th>
+            <td>{{ election.electionState }}</td>
+        </tr>
+        <tr>
+            <th>AllowWriteInCandidates</th>
+            <td>{{ election.allowWriteInCandidates ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+            <th>AllowProxyVoting</th>
+            <td>{{ election.allowProxyVoting ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+            <th>AllowProxyDirected</th>
+            <td>{{ election.allowProxyDirected ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+            <th>AllowProxyNondirected</th>
+            <td>{{ election.allowProxyNondirected ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+            <th>UpdatedAt</th>
+            <td>{{ election.updatedAt ? election.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>CreatedAt</th>
+            <td>{{ election.createdAt ? election.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>IsActive</th>
+            <td>{{ election.isActive ? 'Yes' : 'No' }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('crud_election_index') }}" class="btn btn-primary btn-lg btn-block active" role="button"
+       aria-disabled="true">Return to List</a>
+
+
+    <a href="{{ path('crud_election_edit', {'electionId': election.electionId}) }}"
+       class="btn btn-danger btn-lg btn-block active" role="button" aria-disabled="true">Edit Record</a>
+
+    {{ include('election/_delete_form.html.twig') }}
+{% endblock %}

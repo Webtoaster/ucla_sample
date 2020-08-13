@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% if title is not defined %}
+    {% set page_title = 'Association Dashboard' %}
+{% else %}
+    {% set page_title = title %}
+{% endif %}
+
+{% block title %}{{ parent() }} - {{ page_title }}  - {{ association.nameFormal }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('ui_election') }}
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="h3 mb-3 font-weight-normal">{{ page_title }} - {{ association.nameFormal }}</h2>
+            </div>
+        </div>
+    </div>
+
+    {#	Top of the Page. #}
+    <div class="container-fluid">
+        <div class="row">
+            {% if elections is iterable %}
+                <div class="col-3">
+                    {{ include('association/blocks/_association_detail.html.twig') }}
+                </div>
+                <div class="col-3">
+                    {{ include('property/blocks/_property_tools.html.twig') }}
+                </div>
+                <div class="col-3">
+                    {{ include('election/blocks/_election_management.html.twig') }}
+                </div>
+                <div class="col-3">
+                    {{ include('election/blocks/_election_night_links.html.twig') }}
+                </div>
+            {% else %}
+                {#	There is no election going on at this time.  So it is just the Property Tools and the #}
+                {#	Election Creation Link.#}
+                <div class="col-4">
+                    {{ include('association/blocks/_association_detail.html.twig') }}
+                </div>
+                <div class="col-4">
+                    {{ include('property/blocks/_property_tools.html.twig') }}
+                </div>
+                <div class="col-4">
+                    {{ include('election/blocks/_election_creation.html.twig') }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+
+    {#	Middle of the Page#}
+    {#	This is the current election results as they are ongoing#}
+    {% if elections is iterable %}
+        <div class="container-fluid">
+            {{ include('election/blocks/_current_election_results.html.twig') }}
+        </div>
+    {% else %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    This Association does not have any active Elections at this time.
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+
+    {#	Archives at the Bottom of Page#}
+    {% if archives is iterable %}
+        <div class="container-fluid">
+            {{ include('election/lists/_election_archive.html.twig') }}
+        </div>
+    {% else %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    This Association does not have any Historical Elections at this time.
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('app_election') }}
+{% endblock %}

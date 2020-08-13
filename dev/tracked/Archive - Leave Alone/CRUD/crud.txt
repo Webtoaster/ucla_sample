@@ -1,0 +1,105 @@
+#	Retrospect the existing database
+php bin/console assets:install;
+php bin/console doctrine:mapping:import "App\Entity" annotation --path=src/Entity -vvv --force;
+php bin/console cache:clear;
+composer dump-autoload --optimize  --classmap-authoritative;
+
+#   Go and make sure the repository elements are in the Assertions.
+
+#   Now, generate the relations, getters and setters.
+php bin/console make:entity --regenerate App -vvv;
+
+
+
+rm -rf src/Controller/*;
+rm -rf src/DataFixtures/*;
+rm -rf src/Entity/*;
+rm -rf src/Form/*;
+rm -rf src/Repository/*;
+rm -rf templates/*;
+cp -rf ../community-election/src/Entity/* src/Entity/
+cp -rf ../community-election/src/Repository/* src/Repository/
+cp ../community-election/templates/base.html.twig templates/
+
+
+
+
+dump;
+php bin/console make:entity --regenerate App -vvv;
+dump;
+php bin/console make:crud Association;
+dump;
+php bin/console make:crud AssociationStaff;
+dump;
+php bin/console make:crud AssociationStaffPermission;
+dump;
+php bin/console make:crud Ballot;
+dump;
+php bin/console make:crud BallotStatus;
+dump;
+php bin/console make:crud Company;
+dump;
+php bin/console make:crud DisplayMethod;
+dump;
+php bin/console make:crud Election;
+dump;
+php bin/console make:crud ElectionDate;
+dump;
+php bin/console make:crud Owner;
+dump;
+php bin/console make:crud Permission;
+dump;
+php bin/console make:crud Person;
+dump;
+php bin/console make:crud PersonType;
+dump;
+php bin/console make:crud Property;
+dump;
+php bin/console make:crud ProxyStatus;
+dump;
+php bin/console make:crud Race;
+dump;
+php bin/console make:crud RaceOption;
+dump;
+php bin/console make:crud RaceType;
+dump;
+php bin/console make:crud Sessions;
+dump;
+php bin/console make:crud Upload;
+dump;
+php bin/console make:crud Vote;
+dump;
+php bin/console make:crud VoteAuditTrail;
+dump;
+
+
+
+
+
+
+
+php bin/console make:crud ;
+php bin/console make:crud ;
+php bin/console make:crud ;
+php bin/console make:crud ;
+php bin/console make:crud ;
+
+
+php bin/console assets:install;
+php bin/console cache:clear;
+
+php bin/console doctrine:migrations:diff
+php bin/console doctrine:migrations:migrate
+
+php bin/console debug:router
+
+ --	Import the database schemqa into Entity
+
+rm -rf var/cache;
+php bin/console doctrine:mapping:import "App\Entity" annotation --path=src/Entity --force;
+php bin/console make:entity --regenerate App;
+
+
+
+
+php bin/console doctrine:mapping:import "App\Entity" annotation --path=src/Tables -vvv --force;

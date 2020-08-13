@@ -1,0 +1,86 @@
+<?php
+//
+// 	namespace App\Form\DataTransformer;
+//
+//
+// 	use App\Entity\PersonType;
+// 	use Doctrine\ORM\EntityManagerInterface;
+// 	use LogicException;
+// 	use Symfony\Component\Form\DataTransformerInterface;
+// 	use Symfony\Component\Form\Exception\TransformationFailedException;
+//
+//
+// //	use Doctrine\ORM\EntityManagerInterface;
+//
+// 	class PersonTypeToArrayTransformer implements DataTransformerInterface
+// 	{
+//
+// 		// 	private $PersonTypeRepository;
+// 		// //	private $finderCallback;
+// 		//
+// 		// 	/**
+// 		// 	 * PersonTypeToArrayTransformer constructor.
+// 		// 	 *
+// 		// 	 * @param $PersonTypeRepository
+// 		// 	 * @param $finderCallback
+// 		// 	 */
+// 		// 	public function __construct(PersonTypeRepository $PersonTypeRepository)
+// 		// 	{
+// 		// 		$this->PersonTypeRepository = $PersonTypeRepository;
+// 		// 	//	$this->finderCallback       = $finderCallback;
+// 		// 	}
+// 		//
+//
+// 		private $entityManager;
+//
+// 		public function __construct(EntityManagerInterface $entityManager)
+// 		{
+// 			$this->entityManager = $entityManager;
+// 		}
+//
+// 		public function transform($personTypeId)
+// 		{
+// 		//	dd($personTypeId);
+//
+//
+// 			if (NULL === $personTypeId) {
+// 				return '';
+// 			}
+//
+// 			if (!$personTypeId instanceof PersonType) {
+// 				throw new LogicException('The PersonTypeOptionType can only be used with PersonType objects');
+// 			}
+//
+//
+//
+//
+//
+//
+// 			return $personTypeId->getPersonTypeId();
+// 		}
+//
+// 		public function reverseTransform($personTypeId)
+// 		{
+// 		//	dd($personTypeId);
+//
+//
+// 			if (!$personTypeId) {
+// 				return;
+// 			}
+//
+// 			// $callback     = $this->finderCallback;
+// 			// $personTypeId = $callback($this->PersonTypeRepository, $personTypeId);
+//
+// 			// query for the issue with this id
+// 			$personTypeId = $this->entityManager->getRepository(PersonType::class)->find($personTypeId);
+//
+//
+//
+// 			if (!$personTypeId) {
+// 				throw new TransformationFailedException(sprintf('No PersonType found with this value. "%s"', $personTypeId));
+// 			}
+//
+// 			return $personTypeId;
+// 		}
+//
+// 	}

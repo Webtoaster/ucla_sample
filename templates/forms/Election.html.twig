@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            {{ form_start(form) }}
+            {{ include('forms/blocks/ElectionHeadings.html.twig') }}
+            {{ include('forms/blocks/ElectionDescription.html.twig') }}
+            {{ include('forms/blocks/ElectionDates.html.twig') }}
+            {{ include('forms/blocks/AddressBallotDelivery.html.twig') }}
+            {{ include('forms/blocks/AddressMailing.html.twig', {Legend: 'Ballot Mailing Address'} ) }}
+            {{ include('forms/blocks/ElectionRulesAndRequirements.html.twig') }}
+            {{ include('forms/blocks/ElectionOptions.html.twig') }}
+            {{ include('forms/blocks/ButtonSave.html.twig') }}
+            {{ form_rest(form) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>

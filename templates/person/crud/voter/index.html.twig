@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voter index{% endblock %}
+
+{% block body %}
+    <h1>Voter index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>VoterId</th>
+            <th>IsProxy</th>
+            <th>UpdatedByPersonId</th>
+            <th>CreatedByPersonId</th>
+            <th>Memorandum</th>
+            <th>UpdatedAt</th>
+            <th>CreatedAt</th>
+            <th>IsActive</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for voter in voters %}
+            <tr>
+                <td>{{ voter.voterId }}</td>
+                <td>{{ voter.isProxy ? 'Yes' : 'No' }}</td>
+                <td>{{ voter.updatedByPersonId }}</td>
+                <td>{{ voter.createdByPersonId }}</td>
+                <td>{{ voter.memorandum }}</td>
+                <td>{{ voter.updatedAt ? voter.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ voter.createdAt ? voter.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ voter.isActive ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('crud_voter_show', {'voterId': voter.voterId}) }}"
+                       class="btn btn-primary btn-lg btn-block active" role="button" aria-disabled="true">View
+                        Record</a>
+                    <a href="{{ path('crud_voter_edit', {'voterId': voter.voterId}) }}"
+                       class="btn btn-danger btn-lg btn-block active" role="button" aria-disabled="true">Edit Record</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">No Results from the Database.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('crud_voter_new') }}"
+       class="btn btn-danger btn-lg btn-block active" role="button" aria-disabled="true">Delete Record</a>
+{% endblock %}

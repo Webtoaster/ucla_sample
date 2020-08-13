@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - {{ title|default(' Viewer') }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {#	{{ encore_entry_link_tags('') }}#}
+{% endblock %}
+
+{% block body %}
+    <h2 class="h3 mb-3 font-weight-normal">{{ title|default(' Viewer') }}</h2>
+    <h1>Property</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>PropertyId</th>
+            <td>{{ property.propertyId }}</td>
+        </tr>
+        <tr>
+            <th>ExtHoaPropertyId</th>
+            <td>{{ property.extHoaPropertyId }}</td>
+        </tr>
+        <tr>
+            <th>ExtCadPropertyId</th>
+            <td>{{ property.extCadPropertyId }}</td>
+        </tr>
+        <tr>
+            <th>DateStart</th>
+            <td>{{ property.dateStart ? property.dateStart|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>DateEnd</th>
+            <td>{{ property.dateEnd ? property.dateEnd|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>PhysicalAddressLine1</th>
+            <td>{{ property.physicalAddressLine1 }}</td>
+        </tr>
+        <tr>
+            <th>PhysicalAddressLine2</th>
+            <td>{{ property.physicalAddressLine2 }}</td>
+        </tr>
+        <tr>
+            <th>PhysicalAddressCity</th>
+            <td>{{ property.physicalAddressCity }}</td>
+        </tr>
+        <tr>
+            <th>PhysicalAddressState</th>
+            <td>{{ property.physicalAddressState }}</td>
+        </tr>
+        <tr>
+            <th>PhysicalAddressZipCode</th>
+            <td>{{ property.physicalAddressZipCode }}</td>
+        </tr>
+        <tr>
+            <th>LegalLot</th>
+            <td>{{ property.legalLot }}</td>
+        </tr>
+        <tr>
+            <th>LegalSection</th>
+            <td>{{ property.legalSection }}</td>
+        </tr>
+        <tr>
+            <th>LegalBlock</th>
+            <td>{{ property.legalBlock }}</td>
+        </tr>
+        <tr>
+            <th>LegalDescription</th>
+            <td>{{ property.legalDescription }}</td>
+        </tr>
+        <tr>
+            <th>UpdatedAt</th>
+            <td>{{ property.updatedAt ? property.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>CreatedAt</th>
+            <td>{{ property.createdAt ? property.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>IsActive</th>
+            <td>{{ property.isActive ? 'Yes' : 'No' }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('crud_property_index') }}" class="btn btn-primary btn-lg btn-block active" role="button"
+       aria-disabled="true">Return to List</a>
+
+
+    <a href="{{ path('crud_property_edit', {'propertyId': property.propertyId}) }}"
+       class="btn btn-danger btn-lg btn-block active" role="button" aria-disabled="true">Edit Record</a>
+
+    {{ include('property/_delete_form.html.twig') }}
+{% endblock %}

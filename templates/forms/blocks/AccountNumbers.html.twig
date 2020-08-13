@@ -1,0 +1,7 @@
+<fieldset>
+    <legend class="legend">{{ Legend|default('Account Numbers') }}</legend>
+    {{ form_row(form.accountNumber.externalAccountId) }}
+    {{ form_row(form.accountNumber.internalAccountId) }}
+    {{ form_row(form.accountNumber.internalOwnerId) }}
+    {{ form_row(form.accountNumber.internalPropertyId) }}
+</fieldset>

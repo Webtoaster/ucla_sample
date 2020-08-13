@@ -1,0 +1,103 @@
+{#{{ dump(associations) }}#}
+<table class="table">
+    <thead>
+    <tr>
+        {#            <th>associationId</th>#}
+        <th>Association Name</th>
+        <th>Address</th>
+        <th>Office Phone</th>
+        {#            <th>Url</th>#}
+        {#            <th>UpdatedAt</th>#}
+        {#            <th>CreatedAt</th>#}
+        {#            <th>IsActive</th>#}
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {% for association in associations %}
+        <tr>
+            {#                <td>{{ association.associationId }}</td>#}
+            <td>{% if association.url is not empty %}
+                    <a href="{{ absolute_url(association.url) }}"
+                       target="external_association">{{ association.nameFormal }}</a>
+                {% else %}
+                    {{ association.nameFormal }}
+                {% endif %}
+                {% if is_granted('ROLE_ELECTION_VIEW')  and association.companyId > 0 %}
+                    <div id="election_link_{{ association.companyId }}" class="link-control-panel"><a
+                                href="{{ path('election_control_panel', {'association_id': association.companyId}) }}">Election
+                            Dashboard</a></div>
+                {% endif %}
+                {% if is_granted('ROLE_PROPERTY_VIEW') and association.companyId > 0 %}
+                    <div id="election_link_{{ association.companyId }}" class="link-control-panel"><a
+                                href="{{ path('election_control_panel', {'association_id': association.companyId}) }}">Property
+                            Dashboard</a></div>
+                {% endif %}
+                {% if is_granted('ROLE_PROPERTY_CREATE') and association.companyId > 0 %}
+                    <div id="election_link_{{ association.companyId }}" class="link-control-panel"><a
+                                href="{{ path('upload_property_file', {'association_id': association.companyId}) }}">Property
+                            Importer</a></div>
+                {% endif %}
+            </td>
+
+            <td>
+                {{ association.physicalAddressLine1 }}<br/>
+                {% if association.physicalAddressLine2|trim is not empty %}
+                    {{ association.physicalAddressLine2 }}<br/>
+                {% endif %}
+                {{ association.physicalAddressCity }}
+                , {{ association.physicalAddressState }} {{ association.physicalAddressZipCode }}<br/>
+
+                {#                {% if association.url is not empty %}#}
+                <a href="https://www.google.com/maps/search/?api=1&query={{ association.physicalAddressLine1|url_encode }}{{ ' '|url_encode }}{{ association.physicalAddressLine2|url_encode }}{{ ' '|url_encode }}{{ ' '|url_encode }}{{ association.physicalAddressCity|url_encode }}{{ ','|url_encode }}{{ association.physicalAddressState|url_encode }}{{ ' '|url_encode }}{{ association.physicalAddressZipCode|url_encode }}"
+                   target="external_association_map">Map It!</a>
+                {#                {% endif %}#}
+
+
+            </td>
+
+            {#                <td>{{ association.mailingAddressLine1 }}</td>#}
+            {#                <td>{{ association.mailingAddressLine2 }}</td>#}
+            {#                <td>{{ association.mailingAddressCity }}</td>#}
+            {#                <td>{{ association.mailingAddressState }}</td>#}
+            {#                <td>{{ association.mailingAddressZipCode }}</td>#}
+            {#                <td>{{ association.billingAddressLine1 }}</td>#}
+            {#                <td>{{ association.billingAddressLine2 }}</td>#}
+            {#                <td>{{ association.billingAddressCity }}</td>#}
+            {#                <td>{{ association.billingAddressState }}</td>#}
+            {#                <td>{{ association.billingAddressZipCode }}</td>#}
+            {#                <td>{{ association.phoneFax }}</td>#}
+            <td><a href="tel:{{ association.phoneWork }}">{{ association.phoneWork }}</a></td>
+            </a>
+            {#                <td>{{ association.url }}</td>#}
+            {#                <td>{{ association.updatedAt ? association.updatedAt|date('Y-m-d H:i:s') : '' }}</td>#}
+            {#                <td>{{ association.createdAt ? association.createdAt|date('Y-m-d H:i:s') : '' }}</td>#}
+            {#                <td>{{ association.isActive ? 'Yes' : 'No' }}</td>#}
+
+
+            <td>
+                {% if is_granted('ROLE_ASSOCIATION_VIEW') %}
+                    <a href="{{ path('association_view', {'association_id': association.associationId}) }}">View
+                        Association</a><br/>
+                {% else %}
+                    You are not allowed to View this association's Details<br/>
+                {% endif %}
+
+                {% if is_granted('ROLE_ASSOCIATION_EDIT') %}
+                    <a href="{{ path('association_edit', {'association_id': association.associationId}) }}">Edit
+                        association</a>
+                {% else %}
+                    You are not allowed to Edit this association's Details<br/>
+                {% endif %}
+            </td>
+
+
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="4">No association Records Found.</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

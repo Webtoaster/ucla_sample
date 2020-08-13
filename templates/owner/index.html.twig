@@ -1,0 +1,133 @@
+{% extends 'base.html.twig' %}
+
+{% if title is not defined %}
+    {% set page_title = 'DEFINE_BETTER' %}
+{% else %}
+    {% set page_title = title %}
+{% endif %}
+
+{% block title %}{{ parent() }} - {{ page_title }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {#	{{ encore_entry_link_tags('') }}#}
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="h3 mb-3 font-weight-normal">{{ page_title }}</h2>
+            </div>
+        </div>
+    </div>
+    <h1>Person index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>NameDisplay</th>
+            <th>NameFirst</th>
+            <th>NameMiddle</th>
+            <th>NameLast</th>
+            <th>NameSuffix</th>
+            <th>PhoneHome</th>
+            <th>PhoneMobile</th>
+            <th>PhoneFax</th>
+            <th>PhoneWork</th>
+            <th>PhoneWorkExtension</th>
+            <th>Email</th>
+            <th>MailingAddressLine1</th>
+            <th>MailingAddressLine2</th>
+            <th>MailingAddressCity</th>
+            <th>MailingAddressState</th>
+            <th>MailingAddressZipCode</th>
+            <th>MailingAddressCountry</th>
+            <th>PhysicalAddressLine1</th>
+            <th>PhysicalAddressLine2</th>
+            <th>PhysicalAddressCity</th>
+            <th>PhysicalAddressState</th>
+            <th>PhysicalAddressZipCode</th>
+            <th>Password</th>
+            <th>PasswordRecoveryKey</th>
+            <th>PasswordRecoveryDate</th>
+            <th>PasswordRecoveryIpAddress</th>
+            <th>IpAddress</th>
+            <th>Roles</th>
+            <th>VerificationKey</th>
+            <th>VerificationDate</th>
+            <th>VerificationIpAddress</th>
+            <th>UpdatedAt</th>
+            <th>CreatedAt</th>
+            <th>HasStartedRegistration</th>
+            <th>IsActive</th>
+            <th>IsVerified</th>
+            <th>IsRegistered</th>
+            <th>AgreedToTermsAt</th>
+            <th>TermsId</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for person in people %}
+            <tr>
+                <td>{{ person.id }}</td>
+                <td>{{ person.nameDisplay }}</td>
+                <td>{{ person.nameFirst }}</td>
+                <td>{{ person.nameMiddle }}</td>
+                <td>{{ person.nameLast }}</td>
+                <td>{{ person.nameSuffix }}</td>
+                <td>{{ person.phoneHome }}</td>
+                <td>{{ person.phoneMobile }}</td>
+                <td>{{ person.phoneFax }}</td>
+                <td>{{ person.phoneWork }}</td>
+                <td>{{ person.phoneWorkExtension }}</td>
+                <td>{{ person.email }}</td>
+                <td>{{ person.mailingAddressLine1 }}</td>
+                <td>{{ person.mailingAddressLine2 }}</td>
+                <td>{{ person.mailingAddressCity }}</td>
+                <td>{{ person.mailingAddressState }}</td>
+                <td>{{ person.mailingAddressZipCode }}</td>
+                <td>{{ person.mailingAddressCountry }}</td>
+                <td>{{ person.physicalAddressLine1 }}</td>
+                <td>{{ person.physicalAddressLine2 }}</td>
+                <td>{{ person.physicalAddressCity }}</td>
+                <td>{{ person.physicalAddressState }}</td>
+                <td>{{ person.physicalAddressZipCode }}</td>
+                <td>{{ person.password }}</td>
+                <td>{{ person.passwordRecoveryKey }}</td>
+                <td>{{ person.passwordRecoveryDate ? person.passwordRecoveryDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ person.passwordRecoveryIpAddress }}</td>
+                <td>{{ person.ipAddress }}</td>
+                <td>{{ person.roles ? person.roles|json_encode : '' }}</td>
+                <td>{{ person.verificationKey }}</td>
+                <td>{{ person.verificationDate ? person.verificationDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ person.verificationIpAddress }}</td>
+                <td>{{ person.updatedAt ? person.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ person.createdAt ? person.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ person.hasStartedRegistration ? 'Yes' : 'No' }}</td>
+                <td>{{ person.isActive ? 'Yes' : 'No' }}</td>
+                <td>{{ person.isVerified ? 'Yes' : 'No' }}</td>
+                <td>{{ person.isRegistered ? 'Yes' : 'No' }}</td>
+                <td>{{ person.agreedToTermsAt ? person.agreedToTermsAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ person.termsId }}</td>
+                <td>
+                    <a href="{{ path('crud_person_show', {'id': person.id}) }}"
+                       class="btn btn-primary btn-lg btn-block active" role="button" aria-disabled="true">View
+                        Record</a>
+                    <a href="{{ path('crud_person_edit', {'id': person.id}) }}"
+                       class="btn btn-danger btn-lg btn-block active" role="button" aria-disabled="true">Edit Record</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="41">No Results from the Database.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('crud_person_new') }}"
+       class="btn btn-danger btn-lg btn-block active" role="button" aria-disabled="true">Delete Record</a>
+{% endblock %}

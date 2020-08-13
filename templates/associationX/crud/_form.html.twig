@@ -1,0 +1,16 @@
+{{ form_start(form) }}
+
+
+
+{#{{ form_row(form.companyId) }}#}
+
+{{ include('chunks/blocks/names/_form_name_company.html.twig') }}
+{{ include('chunks/blocks/address_physical/_form_address_physical.html.twig') }}
+{{ include('chunks/blocks/address_mailing/_form_address_mailing.html.twig') }}
+{#{{ include('chunks/_form_address_billing.html.twig') }}#}
+{{ include('chunks/blocks/phone_numbers/_form_phones_work.html.twig') }}
+{{ include('chunks/blocks/address_url/_form_url.html.twig') }}
+
+
+<button class="btn btn-success btn-lg btn-block active">{{ button_label|default('Save Record') }}</button>
+{{ form_end(form) }}

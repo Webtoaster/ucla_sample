@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New AssociationStaff{% endblock %}
+
+{% block body %}
+    <h1>Create new AssociationStaff</h1>
+
+    {{ include('association_staff/_form.html.twig') }}
+
+    <a href="{{ path('crud_association_staff_index') }}" class="btn btn-primary btn-lg btn-block active" role="button"
+       aria-disabled="true">Return to
+        List</a>
+
+{% endblock %}

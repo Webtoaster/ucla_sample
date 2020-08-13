@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% if title is not defined %}
+    {% set page_title = 'DEFINE_BETTER' %}
+{% else %}
+    {% set page_title = title %}
+{% endif %}
+
+{% block title %}{{ parent() }} - {{ page_title }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {#	{{ encore_entry_link_tags('') }}#}
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="h3 mb-3 font-weight-normal">{{ page_title }}</h2>
+            </div>
+        </div>
+    </div>
+    <h1>Edit Upload</h1>
+
+    {{ include('upload/_form.html.twig', {'button_label': 'Update Record'}) }}
+
+    <a href="{{ path('crud_upload_index') }}" class="btn btn-primary btn-lg btn-block active" role="button"
+       aria-disabled="true">Return to List</a>
+
+
+    {{ include('upload/_delete_form.html.twig') }}
+{% endblock %}

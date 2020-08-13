@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vote index{% endblock %}
+
+{% block body %}
+    <h1>Vote index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>VoteId</th>
+            <th>CreatedFromIp</th>
+            <th>UpdatedFromIp</th>
+            <th>CreatedAt</th>
+            <th>UpdatedAt</th>
+            <th>IsActive</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for vote in votes %}
+            <tr>
+                <td>{{ vote.voteId }}</td>
+                <td>{{ vote.createdFromIp }}</td>
+                <td>{{ vote.updatedFromIp }}</td>
+                <td>{{ vote.createdAt ? vote.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ vote.updatedAt ? vote.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ vote.isActive ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('vote_show', {'voteId': vote.voteId}) }}"
+                       class="btn btn-primary btn-lg btn-block active" role="button" aria-disabled="true">View
+                        Record</a>
+                    <a href="{{ path('vote_edit', {'voteId': vote.voteId}) }}"
+                       class="btn btn-danger btn-lg btn-block active" role="button" aria-disabled="true">Edit Record</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">No Results from the Database.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('vote_new') }}"
+       class="btn btn-danger btn-lg btn-block active" role="button" aria-disabled="true">Delete Record</a>
+{% endblock %}

@@ -1,0 +1,5 @@
+
+composer dump-autoload --optimize --classmap-authoritative;
+cc;
+
+

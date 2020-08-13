@@ -1,0 +1,15 @@
+{{ form_start(form) }}
+
+    {{ form_row(form.ballotId) }}
+    {{ form_row(form.candidateId) }}
+    {{ form_row(form.voterId) }}
+    {{ form_row(form.propertyId) }}
+    {{ form_row(form.electionId) }}
+    {{ form_row(form.isProxy) }}
+    {{ form_row(form.proxyPersonId) }}
+    {{ form_row(form.updatedByPersonId) }}
+    {{ form_row(form.createdByPersonId) }}
+    {{ form_row(form.memorandum) }}
+<button class="btn btn-success btn-lg btn-block active">{{ button_label|default('Save Record') }}</button>
+
+{{ form_end(form) }}

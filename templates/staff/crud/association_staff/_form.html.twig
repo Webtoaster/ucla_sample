@@ -1,0 +1,15 @@
+{{ form_start(form) }}
+
+
+
+{{ form_row(form.associationStaffId) }}
+{{ form_row(form.associationId) }}
+{{ form_row(form.personId) }}
+{{ form_row(form.jobTitle) }}
+{{ form_row(form.isAttorney) }}
+{{ form_row(form.isBoardMember) }}
+{{ form_row(form.dateStart) }}
+{{ form_row(form.dateEnd) }}
+
+<button class="btn btn-success btn-lg btn-block active">{{ button_label|default('Save Record') }}</button>
+{{ form_end(form) }}

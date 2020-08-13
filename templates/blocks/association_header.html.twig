@@ -1,0 +1,35 @@
+<div class="AssociationHeaderDetails">
+    <table class="AssociationHeader">
+        <tr>
+            <th>Association:</th>
+            <td>{{ association.nameFormal }}</td>
+        </tr>
+        <tr>
+            <th>Address:</th>
+            <td>{{ association.physicalAddressLine1 }}
+                <br>
+                {% if association.physicalAddressLine2 is not empty %}
+                    {{ association.physicalAddressLine2 }}
+                    <br>
+                {% endif %}
+                {{ association.physicalAddressCity }}, {{ association.physicalAddressState }}
+                &nbsp;{{ association.physicalAddressZipCode }}
+            </td>
+        </tr>
+
+        {% if association.phoneWork is not empty %}
+            <tr>
+                <th>Office #:</th>
+                <td>{{ association.phoneWork }}</td>
+            </tr>
+        {% endif %}
+
+        {% if association.phoneFax is not empty %}
+            <tr>
+                <th>Fax #:</th>
+                <td>{{ association.phoneFax }}</td>
+            </tr>
+        {% endif %}
+
+    </table>
+</div>

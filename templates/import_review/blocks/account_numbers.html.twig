@@ -1,0 +1,27 @@
+{% if
+    import.externalAccountId is empty and
+    import.internalAccountId is empty and
+    import.internalOwnerId is empty and
+    import.internalPropertyId is empty %}
+    <span class="font-weight-light align-middle font-italic">None Imported</span>
+{% else %}
+    <table class="table table-striped table-sm small">
+        {% if import.externalAccountId is not empty %}
+            <tr class="border-0">
+            <th class="text-nowrap" scope="row">Ext. Account ID:</th>
+            <td class="text-nowrap">{{ import.externalAccountId }}</td></tr>{% endif %}
+        {% if    import.internalAccountId is not empty %}
+            <tr class="border-0">
+            <th class="text-nowrap" scope="row">Int. Account ID:</th>
+            <td class="text-nowrap">{{ import.internalAccountId }}</td></tr>{% endif %}
+        {% if    import.internalOwnerId is not empty %}
+            <tr class="border-0">
+            <th class="text-nowrap" scope="row">Int. Owner ID:</th>
+            <td class="text-nowrap">{{ import.internalOwnerId }}</td></tr>{% endif %}
+        {% if    import.internalPropertyId is not empty %}
+            <tr class="border-0">
+            <th class="text-nowrap" scope="row">Int. Property ID:</th>
+            <td class="text-nowrap">{{ import.internalPropertyId }}</td></tr>{% endif %}
+    </table>
+
+{% endif %}

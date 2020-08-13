@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Upload index{% endblock %}
+
+{% block body %}
+    <h1>Upload index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>UploadId</th>
+            <th>FilePath</th>
+            <th>FileName</th>
+            <th>FileExtension</th>
+            <th>FileSize</th>
+            <th>ImageWidth</th>
+            <th>ImageHeight</th>
+            <th>IsImage</th>
+            <th>UploadedBy</th>
+            <th>UpdatedAt</th>
+            <th>CreatedAt</th>
+            <th>IsActive</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for upload in uploads %}
+            <tr>
+                <td>{{ upload.uploadId }}</td>
+                <td>{{ upload.filePath }}</td>
+                <td>{{ upload.fileName }}</td>
+                <td>{{ upload.fileExtension }}</td>
+                <td>{{ upload.fileSize }}</td>
+                <td>{{ upload.imageWidth }}</td>
+                <td>{{ upload.imageHeight }}</td>
+                <td>{{ upload.isImage ? 'Yes' : 'No' }}</td>
+                <td>{{ upload.uploadedBy }}</td>
+                <td>{{ upload.updatedAt ? upload.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ upload.createdAt ? upload.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ upload.isActive ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('crud_upload_show', {'uploadId': upload.uploadId}) }}"
+                       class="btn btn-primary btn-lg btn-block active" role="button" aria-disabled="true">View
+                        Record</a>
+                    <a href="{{ path('crud_upload_edit', {'uploadId': upload.uploadId}) }}"
+                       class="btn btn-danger btn-lg btn-block active" role="button" aria-disabled="true">Edit Record</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">No Results from the Database.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('crud_upload_new') }}"
+       class="btn btn-danger btn-lg btn-block active" role="button" aria-disabled="true">Delete Record</a>
+{% endblock %}

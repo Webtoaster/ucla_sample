@@ -1,0 +1,269 @@
+hy.hoang@nov.com
+
+
+
+REGEX
+
+Address Line 1:			pattern="/^\d+\s[a-zA-Z0-9\s\.]+/s",
+Address Line 2:			pattern="/^[0-9a-zA-Z\s\.\#]+/s",
+City:					pattern="/^[0-9a-zA-Z\s\.\#]+/s",
+State:					pattern="/^[a-zA-Z]{2}/s",
+Zip Code 				pattern="/^[0-9]{5}(-[0-9]{4})?$/s",
+Country:				pattern="/^[a-zA-Z]{2}/s",
+
+Telephone 				pattern="/^[0-9\-\(\)\/\+\s]*$/s",
+
+
+
+		 * @Assert\Regex(
+		 *      pattern="/^[0-9\-\(\)\/\+\s]*$/s",
+		 *      match=false,
+		 *      message="Please enter only a phone numbers in ."
+		 *      )
+
+
+
+
+
+Password:				pattern="/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/s",
+
+
+
+Password must contain 1 number (0-9).
+Password must contain 1 uppercase letters.
+Password must contain 1 lowercase letters.
+Password must contain 1 non-alpha numeric number.
+Password must be between 6-16 characters without spaces.
+
+
+
+
+Password must contain 1 number (0-9).<br/>
+Password must contain 1 uppercase letters.<br/>
+Password must contain 1 lowercase letters.<br/>
+Password must contain 1 non-alpha numeric number.<br/>
+Password must be between 6-16 characters without spaces.<br/>
+
+
+
+yarn add @babel/core
+
+
+yarn add babel-core
+
+@babel/core
+
+https://yarn.pm/@babel/core
+yarn add @babel/parser
+yarn add @babel/cli
+yarn add @babel/core
+
+@babel/code-frame
+
+@babel/helper-get-function-arity
+
+@babel/traverse
+@babel/runtime
+@babel/highlight
+@babel/helpers
+@babel/preset-env
+
+
+
+
+php bin/console doctrine:mapping:import "App\Entity" annotation --path=src/Entity -vvv --force;
+
+
+php bin/console doctrine:mapping:import "App\Entity" annotation --path=src/Entity -vvv --force --filter=Association;
+
+
+
+
+#	Retrospect the existing database
+php bin/console doctrine:mapping:import "App\Entity" annotation --path=src/Entity -vvv --force;
+php bin/console make:entity --regenerate App -vvv;
+
+
+
+
+#	Make a copy of the virgin retrospetive database.
+php bin/console doctrine:mapping:import "App\Entity" annotation --path=src/Entity -vvv --force;
+
+
+
+#	Just regenerate the entitry modifiers
+php bin/console make:entity --regenerate App -vvv;
+
+
+
+
+
+php bin/console make:crud Association;
+php bin/console make:crud AssociationStaff;
+php bin/console make:crud Ballot;
+php bin/console make:crud BallotType;
+php bin/console make:crud Candidate;
+php bin/console make:crud Company;
+php bin/console make:crud Election;
+php bin/console make:crud ElectionDate;
+php bin/console make:crud ElectionType;
+php bin/console make:crud Login;
+php bin/console make:crud Person;
+php bin/console make:crud Property;
+php bin/console make:crud Sessions;
+php bin/console make:crud Upload;
+php bin/console make:crud Voter;
+
+
+
+
+php bin/console make:crud Voter;
+php bin/console make:crud Company;
+php bin/console make:crud Attorney;
+php bin/console make:crud AttorneyToAssociation;
+php bin/console make:crud BoardMember;
+php bin/console make:crud Sessions;
+
+php bin/console make:crud ElectionDate;
+php bin/console make:crud ElectionType;
+
+
+
+--name=
+
+# config/packages/dev/maker.yaml
+# create this file if you need to configure anything
+maker:
+    # tell MakerBundle that all of your classes lives in an
+    # Acme namespace, instead of the default App
+    # (e.g. Acme\Entity\Article, Acme\Command\MyCommand, etc)
+    root_namespace: 'Acme'
+
+
+
+php bin/console generate:doctrine:crud AcmeBlogBundle:Post -n --format=annotation --with-write
+ --route-prefix=crud
+ --format=annotation
+ --with-write=yes
+ --overwrite=no
+
+
+php bin/console generate:doctrine:crud ElectionBundle:Association --route-prefix=crud --format=annotation --with-write=yes --overwrite=no
+
+
+
+
+$ php bin/console generate:doctrine:crud --route-prefix=acme_post
+
+
+php bin/console assets:install;
+php bin/console cache:clear;
+
+
+
+
+
+
+
+
+
+
+php bin/console doctrine:migrations:diff
+php bin/console doctrine:migrations:migrate
+
+
+
+
+php bin/console debug:router
+
+
+
+ --	Import the database schemqa into Entity
+
+rm -rf var/cache;
+php bin/console doctrine:mapping:import "App\Import" annotation --path=src/Import --force;
+php bin/console make:entity --regenerate App;
+
+
+
+
+
+
+php bin/console make:crud Association;
+php bin/console make:crud Attorney;
+php bin/console make:crud AttorneyToAssociation;
+php bin/console make:crud Ballot;
+php bin/console make:crud BallotType;
+php bin/console make:crud BoardMember;
+php bin/console make:crud Company;
+php bin/console make:crud Sessions;
+
+
+php bin/console make:crud Election;
+
+
+php bin/console make:crud ElectionDate;
+php bin/console make:crud ElectionType;
+php bin/console make:crud HoaStaffMember;
+php bin/console make:crud Login;
+php bin/console make:crud Owner;
+php bin/console make:crud Person;
+php bin/console make:crud PersonToAssociation;
+php bin/console make:crud Property;
+php bin/console make:crud Voter;
+
+
+php bin/console make:crud Candidate;
+php bin/console assets:install;
+php bin/console cache:clear;
+
+
+composer dump-autoload --optimize --no-dev --classmap-authoritative
+composer dump-autoload --optimize  --classmap-authoritative
+
+
+
+
+php bin/console make:form PartialSignupStep1Type;
+
+npm install webpack file-loader css-loader sass-loader node-sass --save-dev;
+npm install font-awesome --save;
+
+
+
+
+ php bin/console doctrine:fixtures:load --append
+
+
+
+
+
+
+
+
+
+ --	Import the database schemqa into Entity
+
+rm -rf var/cache;
+php bin/console doctrine:mapping:import "App\Entity" annotation --path=src/Entity --force;
+
+
+php bin/console make:entity --regenerate App;
+
+-- Re Import the schema into a different directory
+php bin/console doctrine:mapping:import "App\Import" annotation --path=src/Import --force;
+
+
+
+composer dump-autoload --optimize --classmap-authoritative;
+cc;
+
+
+
+composer dump-autoload --optimize
+
+yarn encore dev --watch
+
+yarn watch -d
+
+

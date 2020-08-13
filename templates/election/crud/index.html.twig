@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Election index{% endblock %}
+
+{% block body %}
+    <h1>Election index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ElectionId</th>
+            <th>ElectionNameHeading</th>
+            <th>ElectionNameSubheading</th>
+            <th>UrlElection</th>
+            <th>HtmlElectionInformation</th>
+            <th>BallotPhysicalAddressLine1</th>
+            <th>BallotPhysicalAddressLine2</th>
+            <th>BallotPhysicalAddressCity</th>
+            <th>BallotPhysicalAddressState</th>
+            <th>BallotPhysicalAddressZipCode</th>
+            <th>DisplayPhysicalAddress</th>
+            <th>BallotMailingAddressLine1</th>
+            <th>BallotMailingAddressLine2</th>
+            <th>BallotMailingAddressCity</th>
+            <th>BallotMailingAddressState</th>
+            <th>BallotMailingAddressZipCode</th>
+            <th>DisplayMailingAddress</th>
+            <th>VotesMin</th>
+            <th>VotesMax</th>
+            <th>DateStart</th>
+            <th>DateEnd</th>
+            <th>VotersTotal</th>
+            <th>VotersRequiredElection</th>
+            <th>VotersRequiredRatification</th>
+            <th>ElectionState</th>
+            <th>AllowWriteInCandidates</th>
+            <th>AllowProxyVoting</th>
+            <th>AllowProxyDirected</th>
+            <th>AllowProxyNondirected</th>
+            <th>UpdatedAt</th>
+            <th>CreatedAt</th>
+            <th>IsActive</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for election in elections %}
+            <tr>
+                <td>{{ election.electionId }}</td>
+                <td>{{ election.electionNameHeading }}</td>
+                <td>{{ election.electionNameSubheading }}</td>
+                <td>{{ election.urlElection }}</td>
+                <td>{{ election.htmlElectionInformation }}</td>
+                <td>{{ election.physicalAddressLine1 }}</td>
+                <td>{{ election.physicalAddressLine2 }}</td>
+                <td>{{ election.physicalAddressCity }}</td>
+                <td>{{ election.physicalAddressState }}</td>
+                <td>{{ election.physicalAddressZipCode }}</td>
+                <td>{{ election.displayPhysicalAddress ? 'Yes' : 'No' }}</td>
+                <td>{{ election.mailingAddressLine1 }}</td>
+                <td>{{ election.mailingAddressLine2 }}</td>
+                <td>{{ election.mailingAddressCity }}</td>
+                <td>{{ election.mailingAddressState }}</td>
+                <td>{{ election.mailingAddressZipCode }}</td>
+                <td>{{ election.displayMailingAddress ? 'Yes' : 'No' }}</td>
+                <td>{{ election.votesMin }}</td>
+                <td>{{ election.votesMax }}</td>
+                <td>{{ election.dateStart ? election.dateStart|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ election.dateEnd ? election.dateEnd|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ election.votersTotal }}</td>
+                <td>{{ election.votersRequiredElection }}</td>
+                <td>{{ election.votersRequiredRatification }}</td>
+                <td>{{ election.electionState }}</td>
+                <td>{{ election.allowWriteInCandidates ? 'Yes' : 'No' }}</td>
+                <td>{{ election.allowProxyVoting ? 'Yes' : 'No' }}</td>
+                <td>{{ election.allowProxyDirected ? 'Yes' : 'No' }}</td>
+                <td>{{ election.allowProxyNondirected ? 'Yes' : 'No' }}</td>
+                <td>{{ election.updatedAt ? election.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ election.createdAt ? election.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ election.isActive ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('crud_election_show', {'electionId': election.electionId}) }}"
+                       class="btn btn-primary btn-lg btn-block active" role="button" aria-disabled="true">View
+                        Record</a>
+                    <a href="{{ path('crud_election_edit', {'electionId': election.electionId}) }}"
+                       class="btn btn-danger btn-lg btn-block active" role="button" aria-disabled="true">Edit Record</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="33">No Results from the Database.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('crud_election_new') }}"
+       class="btn btn-danger btn-lg btn-block active" role="button" aria-disabled="true">Delete Record</a>
+{% endblock %}

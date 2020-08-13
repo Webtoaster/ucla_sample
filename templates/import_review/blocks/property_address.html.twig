@@ -1,0 +1,28 @@
+{% if
+    import.propertyAddressLine1   is empty and
+    import.propertyAddressLine2   is empty and
+    import.propertyAddressCity    is empty and
+    import.propertyAddressState   is empty and
+    import.propertyAddressZipCode is empty and
+    import.propertyAddressCountry %}<span class="font-weight-light  font-italic">(None Imported)</span>
+{% else %}
+    {% if import.propertyAddressLine1 is not empty %}<span class="text-nowrap">{{ import.propertyAddressLine1 }}</span>
+        <br/>{% endif %}
+    {% if    import.propertyAddressLine2 is not empty %}<span
+            class="text-nowrap">{{ import.propertyAddressLine2 }}</span>
+        <br/>{% endif %}
+    {% if
+        import.propertyAddressCity is not empty and
+        import.propertyAddressState is not empty %}
+        <span class="text-nowrap">
+    {% endif %}
+    {% if import.propertyAddressCity is not empty %}{{ import.propertyAddressCity }}, {% endif %}
+    {% if import.propertyAddressState is not empty %}{{ import.propertyAddressState }}<br/>{% endif %}
+    {% if
+        import.propertyAddressCity is not empty and
+        import.propertyAddressState is not empty %}
+        </span>
+    {% endif %}
+    {% if    import.propertyAddressZipCode is not empty %}{{ import.propertyAddressZipCode }}{% endif %}
+
+{% endif %}

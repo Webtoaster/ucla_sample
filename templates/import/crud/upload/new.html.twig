@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Upload{% endblock %}
+
+{% block body %}
+    <h1>Create new Upload</h1>
+
+    {{ include('upload/_form.html.twig') }}
+
+    <a href="{{ path('crud_upload_index') }}" class="btn btn-primary btn-lg btn-block active" role="button"
+       aria-disabled="true">Return to List</a>
+
+{% endblock %}

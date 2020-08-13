@@ -1,0 +1,20 @@
+{{ form_start(form) }}
+  {{ form_row(form.propertyId) }}
+{{ form_row(form.ownerId) }}
+{{ form_row(form.associationId) }}
+{{ form_row(form.extHoaPropertyId) }}
+{{ form_row(form.extCadPropertyId) }}
+{{ form_row(form.dateStart) }}
+{{ form_row(form.dateEnd) }}
+{{ form_row(form.physicalAddressLine1) }}
+{{ form_row(form.physicalAddressLine2) }}
+{{ form_row(form.physicalAddressCity) }}
+{{ form_row(form.physicalAddressState) }}
+{{ form_row(form.physicalAddressZipCode) }}
+{{ form_row(form.legalLot) }}
+{{ form_row(form.legalSection) }}
+{{ form_row(form.legalBlock) }}
+{{ form_row(form.legalDescription) }}
+
+<button class="btn btn-success btn-lg btn-block active">{{ button_label|default('Save Record') }}</button>
+{{ form_end(form) }}

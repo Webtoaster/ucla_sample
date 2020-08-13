@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Race{% endblock %}
+
+{% block body %}
+    <h1>Race</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>RaceId</th>
+            <td>{{ race.raceId }}</td>
+        </tr>
+        <tr>
+            <th>Heading</th>
+            <td>{{ race.heading }}</td>
+        </tr>
+        <tr>
+            <th>Subheading</th>
+            <td>{{ race.subheading }}</td>
+        </tr>
+        <tr>
+            <th>SelectMin</th>
+            <td>{{ race.selectMin }}</td>
+        </tr>
+        <tr>
+            <th>SelectMax</th>
+            <td>{{ race.selectMax }}</td>
+        </tr>
+        <tr>
+            <th>AllowForQuorum</th>
+            <td>{{ race.allowForQuorum ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+            <th>AllowForAbstain</th>
+            <td>{{ race.allowForAbstain ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+            <th>FormType</th>
+            <td>{{ race.formType }}</td>
+        </tr>
+        <tr>
+            <th>DisplayMethod</th>
+            <td>{{ race.displayMethod }}</td>
+        </tr>
+        <tr>
+            <th>DisplayIncumbency</th>
+            <td>{{ race.displayIncumbency ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+            <th>DisplayDeclared</th>
+            <td>{{ race.displayDeclared ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+            <th>DisplayWriteIn</th>
+            <td>{{ race.displayWriteIn ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+            <th>SortOrder</th>
+            <td>{{ race.sortOrder }}</td>
+        </tr>
+        <tr>
+            <th>DescriptionShort</th>
+            <td>{{ race.descriptionShort }}</td>
+        </tr>
+        <tr>
+            <th>DescriptionLong</th>
+            <td>{{ race.descriptionLong }}</td>
+        </tr>
+        <tr>
+            <th>DisplayDescriptionLong</th>
+            <td>{{ race.displayDescriptionLong ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+            <th>CreatedFromIp</th>
+            <td>{{ race.createdFromIp }}</td>
+        </tr>
+        <tr>
+            <th>UpdatedFromIp</th>
+            <td>{{ race.updatedFromIp }}</td>
+        </tr>
+        <tr>
+            <th>CreatedAt</th>
+            <td>{{ race.createdAt ? race.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>UpdatedAt</th>
+            <td>{{ race.updatedAt ? race.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>IsActive</th>
+            <td>{{ race.isActive ? 'Yes' : 'No' }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('race_index') }}" class="btn btn-primary btn-lg btn-block active" role="button"
+       aria-disabled="true">Return to List</a>
+
+
+    <a href="{{ path('race_edit', {'raceId': race.raceId}) }}"
+       class="btn btn-danger btn-lg btn-block active" role="button" aria-disabled="true">Edit Record</a>
+
+    {{ include('race/_delete_form.html.twig') }}
+{% endblock %}

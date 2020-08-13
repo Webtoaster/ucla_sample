@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A Web Application for Community Based Elections">
+    <meta name="author" content="Tom Olson <olson@webtoaster.com>">
+
+    <meta lang="en"/>
+
+    {#	This makes sure there is a hyphen between the Site Name and the Page Name when not on the Home Page #}
+    {% if  path('app_home') == TRUE %}
+        <title>{{ site_name }}</title>
+    {% else %}
+        <title>{{ site_name }} - {% block title %}{% endblock %}</title>
+    {% endif %}
+
+    {{ encore_entry_link_tags('ui') }}
+    {% block stylesheets %}{% endblock %}
+
+</head>
+
+<body class="d-flex flex-column h-100">
+{#This page follows the Bootstrap Sticky Footer with Fixed Navbar #}
+{#layout which is demonstrated here. #}
+{#https://getbootstrap.com/docs/4.3/examples/sticky-footer-navbar/#}
+
+<header>
+    {{ include('blocks/base_header.twig') }}
+</header>
+
+
+{{ include('blocks/_notice_impersonating.html.twig') }}
+{{ include('blocks/_notice_flash_messages.html.twig') }}
+
+
+<main role="main" class="flex-shrink-0 mt-3">
+    <div class="container-fluid">
+        {% block body %}
+
+        {% endblock %}
+    </div>
+</main>
+
+<footer class="footer mt-auto py-3">
+    <div class="container">
+        {{ include('blocks/base_footer.html.twig') }}
+    </div>
+</footer>
+
+{{ encore_entry_script_tags('app') }}
+{% block javascripts %}
+
+    {#    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>#}
+    {#    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>#}
+    {#    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>#}
+{% endblock %}
+
+</body>
+</html>

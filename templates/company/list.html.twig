@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% if title is not defined %}
+    {% set page_title = 'DEFINE_BETTER' %}
+{% else %}
+    {% set page_title = title %}
+{% endif %}
+
+{% block title %}{{ parent() }} - {{ page_title }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {#	{{ encore_entry_link_tags('') }}#}
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="h3 mb-3 font-weight-normal">{{ page_title }}</h2>
+            </div>
+        </div>
+    </div>
+    <h1 class="h3 mb-3 font-weight-normal">{{ title|default('Company List') }}</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>CompanyId</th>
+            <th>CompanyName</th>
+            <th>PhysicalAddressLine1</th>
+            <th>PhysicalAddressLine2</th>
+            <th>PhysicalAddressCity</th>
+            <th>PhysicalAddressState</th>
+            <th>PhysicalAddressZipCode</th>
+            <th>MailingAddressLine1</th>
+            <th>MailingAddressLine2</th>
+            <th>MailingAddressCity</th>
+            <th>MailingAddressState</th>
+            <th>MailingAddressZipCode</th>
+            <th>BillingAddressLine1</th>
+            <th>BillingAddressLine2</th>
+            <th>BillingAddressCity</th>
+            <th>BillingAddressState</th>
+            <th>BillingAddressZipCode</th>
+            <th>PhoneFax</th>
+            <th>PhoneWork</th>
+            <th>Url</th>
+            <th>UpdatedAt</th>
+            <th>CreatedAt</th>
+            <th>IsActive</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for company in companies %}
+            <tr>
+                <td>{{ company.companyId }}</td>
+                <td>{{ company.companyName }}</td>
+                <td>{{ company.physicalAddressLine1 }}</td>
+                <td>{{ company.physicalAddressLine2 }}</td>
+                <td>{{ company.physicalAddressCity }}</td>
+                <td>{{ company.physicalAddressState }}</td>
+                <td>{{ company.physicalAddressZipCode }}</td>
+                <td>{{ company.mailingAddressLine1 }}</td>
+                <td>{{ company.mailingAddressLine2 }}</td>
+                <td>{{ company.mailingAddressCity }}</td>
+                <td>{{ company.mailingAddressState }}</td>
+                <td>{{ company.mailingAddressZipCode }}</td>
+                <td>{{ company.billingAddressLine1 }}</td>
+                <td>{{ company.billingAddressLine2 }}</td>
+                <td>{{ company.billingAddressCity }}</td>
+                <td>{{ company.billingAddressState }}</td>
+                <td>{{ company.billingAddressZipCode }}</td>
+                <td>{{ company.phoneFax }}</td>
+                <td>{{ company.phoneWork }}</td>
+                <td>{{ company.url }}</td>
+                <td>{{ company.updatedAt ? company.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ company.createdAt ? company.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ company.isActive ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('company_show', {'companyId': company.companyId}) }}"
+                       class="btn btn-primary btn-lg btn-block active" role="button" aria-disabled="true">View
+                        Record</a>
+                    <a href="{{ path('company_update', {'companyId': company.companyId}) }}"
+                       class="btn btn-danger btn-lg btn-block active" role="button" aria-disabled="true">Edit Record</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="24">No Results from the Database.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('company_new') }}">Create New Association</a>
+{% endblock %}

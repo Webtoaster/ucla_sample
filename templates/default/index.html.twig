@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome!{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {#	{{ encore_entry_link_tags('') }}#}
+{% endblock %}
+{% block body %}
+
+
+    <h2>Welcome to Community Election.com</h2>
+
+
+    <p class="lead">
+        This is my Lead Text
+    </p>
+
+
+    {% if app.session.get('current_company_id') %}
+        <p>
+            {{ app.session.get('current_company_id') }}
+
+        </p>
+    {% endif %}
+
+
+
+
+    {#	{{ dump(app.session.current_company_id) }}#}
+
+    <div class="container"></div>
+
+
+
+
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {#	{{ encore_entry_script_tags('') }}#}
+{% endblock %}

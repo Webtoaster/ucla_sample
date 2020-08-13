@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Company{% endblock %}
+
+{% block body %}
+
+
+
+    <h1>Association Entry</h1>
+
+
+
+
+
+
+    {{ include('company/_form.html.twig') }}
+
+    <a href="{{ path('crud_company_index') }}" class="btn btn-primary btn-lg btn-block active" role="button"
+       aria-disabled="true">Return to List</a>
+
+{% endblock %}

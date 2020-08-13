@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% if title is not defined %}
+    {% set page_title = 'Viewer' %}
+{% else %}
+    {% set page_title = title %}
+{% endif %}
+
+
+{% block title %}{{ parent() }} - {{ page_title }}{% endblock %}
+
+
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    {#	{{ encore_entry_link_tags('') }}#}
+{% endblock %}
+
+
+
+
+{% block body %}
+    <h2 class="h3 mb-3 font-weight-normal">{{ title|default(' Viewer') }}</h2>
+    <h1>Upload</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>UploadId</th>
+            <td>{{ upload.uploadId }}</td>
+        </tr>
+        <tr>
+            <th>Filename</th>
+            <td>{{ upload.filename }}</td>
+        </tr>
+        <tr>
+            <th>OriginalFilename</th>
+            <td>{{ upload.originalFilename }}</td>
+        </tr>
+        <tr>
+            <th>MimeType</th>
+            <td>{{ upload.mimeType }}</td>
+        </tr>
+        <tr>
+            <th>CreatedFromIp</th>
+            <td>{{ upload.createdFromIp }}</td>
+        </tr>
+        <tr>
+            <th>UpdatedFromIp</th>
+            <td>{{ upload.updatedFromIp }}</td>
+        </tr>
+        <tr>
+            <th>CreatedAt</th>
+            <td>{{ upload.createdAt ? upload.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>UpdatedAt</th>
+            <td>{{ upload.updatedAt ? upload.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>IsActive</th>
+            <td>{{ upload.isActive ? 'Yes' : 'No' }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('upload_index') }}" class="btn btn-primary btn-lg btn-block active" role="button"
+       aria-disabled="true">Return to List</a>
+
+
+    <a href="{{ path('upload_edit', {'uploadId': upload.uploadId}) }}"
+       class="btn btn-danger btn-lg btn-block active" role="button" aria-disabled="true">Edit Record</a>
+
+    {{ include('upload/_delete_form.html.twig') }}
+{% endblock %}

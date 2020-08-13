@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AssociationStaff{% endblock %}
+
+{% block body %}
+    <h1>AssociationStaff</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>AssociationStaffId</th>
+            <td>{{ association_staff.associationStaffId }}</td>
+        </tr>
+        <tr>
+            <th>IsAttorney</th>
+            <td>{{ association_staff.isAttorney ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+            <th>JobTitle</th>
+            <td>{{ association_staff.jobTitle }}</td>
+        </tr>
+        <tr>
+            <th>IsBoardMember</th>
+            <td>{{ association_staff.isBoardMember ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+            <th>DateStart</th>
+            <td>{{ association_staff.dateStart ? association_staff.dateStart|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>DateEnd</th>
+            <td>{{ association_staff.dateEnd ? association_staff.dateEnd|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>UpdatedAt</th>
+            <td>{{ association_staff.updatedAt ? association_staff.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>CreatedAt</th>
+            <td>{{ association_staff.createdAt ? association_staff.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>IsActive</th>
+            <td>{{ association_staff.isActive ? 'Yes' : 'No' }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('crud_association_staff_index') }}" class="btn btn-primary btn-lg btn-block active" role="button"
+       aria-disabled="true">Return to
+        List</a>
+
+
+    <a href="{{ path('crud_association_staff_edit', {'associationStaffId': association_staff.associationStaffId}) }}"
+       class="btn btn-danger btn-lg btn-block active" role="button" aria-disabled="true">Edit Record</a>
+
+    {{ include('association_staff/_delete_form.html.twig') }}
+{% endblock %}

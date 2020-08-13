@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RaceOption index{% endblock %}
+
+{% block body %}
+    <h1>RaceOption index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>RaceOptionId</th>
+            <th>DisplayCandidateAddress</th>
+            <th>IsWriteIn</th>
+            <th>ShareWriteIn</th>
+            <th>NameDisplay</th>
+            <th>NameFirst</th>
+            <th>NameMiddle</th>
+            <th>NameLast</th>
+            <th>NameSuffix</th>
+            <th>Email</th>
+            <th>PhoneWork</th>
+            <th>PhoneHome</th>
+            <th>PhoneMobile</th>
+            <th>PhoneFax</th>
+            <th>PhysicalAddressLine1</th>
+            <th>PhysicalAddressLine2</th>
+            <th>PhysicalAddressCity</th>
+            <th>PhysicalAddressState</th>
+            <th>PhysicalAddressZipCode</th>
+            <th>MailingAddressLine1</th>
+            <th>MailingAddressLine2</th>
+            <th>MailingAddressCity</th>
+            <th>MailingAddressState</th>
+            <th>MailingAddressZipCode</th>
+            <th>MailingAddressCountry</th>
+            <th>CreatedFromIp</th>
+            <th>UpdatedFromIp</th>
+            <th>CreatedAt</th>
+            <th>UpdatedAt</th>
+            <th>IsActive</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for race_option in race_options %}
+            <tr>
+                <td>{{ race_option.raceOptionId }}</td>
+                <td>{{ race_option.displayCandidateAddress ? 'Yes' : 'No' }}</td>
+                <td>{{ race_option.isWriteIn ? 'Yes' : 'No' }}</td>
+                <td>{{ race_option.shareWriteIn ? 'Yes' : 'No' }}</td>
+                <td>{{ race_option.nameDisplay }}</td>
+                <td>{{ race_option.nameFirst }}</td>
+                <td>{{ race_option.nameMiddle }}</td>
+                <td>{{ race_option.nameLast }}</td>
+                <td>{{ race_option.nameSuffix }}</td>
+                <td>{{ race_option.email }}</td>
+                <td>{{ race_option.phoneWork }}</td>
+                <td>{{ race_option.phoneHome }}</td>
+                <td>{{ race_option.phoneMobile }}</td>
+                <td>{{ race_option.phoneFax }}</td>
+                <td>{{ race_option.physicalAddressLine1 }}</td>
+                <td>{{ race_option.physicalAddressLine2 }}</td>
+                <td>{{ race_option.physicalAddressCity }}</td>
+                <td>{{ race_option.physicalAddressState }}</td>
+                <td>{{ race_option.physicalAddressZipCode }}</td>
+                <td>{{ race_option.mailingAddressLine1 }}</td>
+                <td>{{ race_option.mailingAddressLine2 }}</td>
+                <td>{{ race_option.mailingAddressCity }}</td>
+                <td>{{ race_option.mailingAddressState }}</td>
+                <td>{{ race_option.mailingAddressZipCode }}</td>
+                <td>{{ race_option.mailingAddressCountry }}</td>
+                <td>{{ race_option.createdFromIp }}</td>
+                <td>{{ race_option.updatedFromIp }}</td>
+                <td>{{ race_option.createdAt ? race_option.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ race_option.updatedAt ? race_option.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ race_option.isActive ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('race_option_show', {'raceOptionId': race_option.raceOptionId}) }}"
+                       class="btn btn-primary btn-lg btn-block active" role="button" aria-disabled="true">View
+                        Record</a>
+                    <a href="{{ path('race_option_edit', {'raceOptionId': race_option.raceOptionId}) }}"
+                       class="btn btn-danger btn-lg btn-block active" role="button" aria-disabled="true">Edit Record</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="31">No Results from the Database.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('race_option_new') }}"
+       class="btn btn-danger btn-lg btn-block active" role="button" aria-disabled="true">Delete Record</a>
+{% endblock %}

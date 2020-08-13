@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Person{% endblock %}
+
+{% block body %}
+    <h1>Create new Person</h1>
+
+    {{ include('person/_form.html.twig') }}
+
+    <a href="{{ path('crud_person_index') }}" class="btn btn-primary btn-lg btn-block active" role="button"
+       aria-disabled="true">Return to List</a>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New RaceType{% endblock %}
+
+{% block body %}
+    <h1>Create new RaceType</h1>
+
+    {{ include('race_type/_form.html.twig') }}
+
+    <a href="{{ path('race_type_index') }}" class="btn btn-primary btn-lg btn-block active" role="button"
+       aria-disabled="true">Return to List</a>
+
+{% endblock %}

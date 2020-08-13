@@ -1,0 +1,27 @@
+{% if
+    import.mailingAddressLine1   is empty and
+    import.mailingAddressLine2   is empty and
+    import.mailingAddressCity    is empty and
+    import.mailingAddressState   is empty and
+    import.mailingAddressZipCode is empty and
+    import.mailingAddressCountry %}<span class="font-weight-light  font-italic">(None Imported)</span>
+{% else %}
+    {% if import.mailingAddressLine1 is not empty %}<span class="text-nowrap">{{ import.mailingAddressLine1 }}</span>
+        <br/>{% endif %}
+    {% if    import.mailingAddressLine2 is not empty %}<span class="text-nowrap">{{ import.mailingAddressLine2 }}</span>
+        <br/>{% endif %}
+    {% if
+        import.mailingAddressCity is not empty and
+        import.mailingAddressState is not empty %}
+        <span class="text-nowrap">
+    {% endif %}
+    {% if import.mailingAddressCity is not empty %}{{ import.mailingAddressCity }}, {% endif %}
+    {% if import.mailingAddressState is not empty %}{{ import.mailingAddressState }}<br/>{% endif %}
+    {% if
+        import.mailingAddressCity is not empty and
+        import.mailingAddressState is not empty %}
+        </span>
+    {% endif %}
+    {% if    import.mailingAddressZipCode is not empty %}{{ import.mailingAddressZipCode }}{% endif %}
+    {% if    import.mailingAddressCountry is not empty %}<br/>{{ import.mailingAddressCountry }}{% endif %}
+{% endif %}

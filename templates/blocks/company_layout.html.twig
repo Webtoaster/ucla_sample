@@ -1,0 +1,97 @@
+{#{{ dump(companies) }}#}
+<table class="table">
+    <thead>
+    <tr>
+        {#            <th>CompanyId</th>#}
+        <th>Company Name</th>
+        <th>Address</th>
+        <th>Office Phone</th>
+        {#            <th>Url</th>#}
+        {#            <th>UpdatedAt</th>#}
+        {#            <th>CreatedAt</th>#}
+        {#            <th>IsActive</th>#}
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {% for company in companies %}
+        <tr>
+            {#                <td>{{ company.companyId }}</td>#}
+            <td>{% if company.url is not empty %}
+                    <a href="{{ absolute_url(company.url) }}" target="external_company">{{ company.nameFormal }}</a>
+                {% else %}
+                    {{ company.nameFormal }}
+                {% endif %}
+                {% if is_granted('ROLE_ACCESS_ELECTIONS')  and company.associationId > 0 %}
+                    <div id="election_link_{{ company.associationId }}" class="link-election-control-panel"><a
+                                href="{{ path('election_control_panel', {'associationId': company.associationId}) }}">Election
+                            Control Panel</a></div>
+
+                {% endif %}
+
+
+            </td>
+
+
+            <td>
+                {{ company.physicalAddressLine1 }}
+                {% if company.physicalAddressLine1 is not empty %}
+                    {{ company.physicalAddressLine2 }}<br/>
+                {% endif %}
+                {{ company.physicalAddressCity }}
+                , {{ company.physicalAddressState }} {{ company.physicalAddressZipCode }}
+
+
+                {% if company.url is not empty %}
+                    <br/>
+                    <a href="https://www.google.com/maps/search/?api=1&query={{ company.physicalAddressLine1|url_encode }}{{ ' '|url_encode }}{{ company.physicalAddressLine2|url_encode }}{{ ' '|url_encode }}{{ ' '|url_encode }}{{ company.physicalAddressCity|url_encode }}{{ ','|url_encode }}{{ company.physicalAddressState|url_encode }}{{ ' '|url_encode }}{{ company.physicalAddressZipCode|url_encode }}"
+                       target="external_company_map">Map It!</a>
+                {% endif %}
+
+
+            </td>
+
+            {#                <td>{{ company.mailingAddressLine1 }}</td>#}
+            {#                <td>{{ company.mailingAddressLine2 }}</td>#}
+            {#                <td>{{ company.mailingAddressCity }}</td>#}
+            {#                <td>{{ company.mailingAddressState }}</td>#}
+            {#                <td>{{ company.mailingAddressZipCode }}</td>#}
+            {#                <td>{{ company.billingAddressLine1 }}</td>#}
+            {#                <td>{{ company.billingAddressLine2 }}</td>#}
+            {#                <td>{{ company.billingAddressCity }}</td>#}
+            {#                <td>{{ company.billingAddressState }}</td>#}
+            {#                <td>{{ company.billingAddressZipCode }}</td>#}
+            {#                <td>{{ company.phoneFax }}</td>#}
+            <td><a href="tel:{{ company.phoneWork }}">{{ company.phoneWork }}</a></td>
+            </a>
+            {#                <td>{{ company.url }}</td>#}
+            {#                <td>{{ company.updatedAt ? company.updatedAt|date('Y-m-d H:i:s') : '' }}</td>#}
+            {#                <td>{{ company.createdAt ? company.createdAt|date('Y-m-d H:i:s') : '' }}</td>#}
+            {#                <td>{{ company.isActive ? 'Yes' : 'No' }}</td>#}
+
+
+            <td>
+                {% if is_granted('ROLE_COMPANY_VIEW') %}
+                    <a href="{{ path('company_view', {'company_id': company.companyId}) }}">View Company Details</a>
+                    <br/>
+                {% else %}
+                    You are not allowed to View this Company's Details<br/>
+                {% endif %}
+
+                {% if is_granted('ROLE_COMPANY_EDIT') %}
+                    <a href="{{ path('company_edit', {'company_id': company.companyId}) }}">Edit Company Details</a>
+                {% else %}
+                    You are not allowed to Edit this Company's Details<br/>
+                {% endif %}
+            </td>
+
+
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="4">No Company Records Found.</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

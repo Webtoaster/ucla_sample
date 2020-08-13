@@ -1,0 +1,22 @@
+# Read the documentation: https://symfony.com/doc/current/bundles/FOSCKEditorBundle/index.html
+
+fos_ck_editor:
+
+  configs:
+    election:
+      toolbar:                standard
+      uiColor:                "#ffffff"
+      language:               en
+
+
+  input_sync: true
+
+
+
+  toolbars:
+    configs:
+      my_toolbar_1: [ [ "Source", "-", "Save" ], "/", [ "Anchor" ], "/", [ "Maximize" ] ]
+
+twig:
+  form_themes:
+    - '@FOSCKEditor/Form/ckeditor_widget.html.twig'

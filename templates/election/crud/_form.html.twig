@@ -1,0 +1,41 @@
+{{ form_start(form) }}
+
+
+
+
+{{ form_row(form.electionId) }}
+{{ form_row(form.associationId) }}
+{{ form_row(form.electionTypeId) }}
+{{ form_row(form.electionNameHeading) }}
+{{ form_row(form.electionNameSubheading) }}
+{{ form_row(form.urlElection) }}
+{{ form_row(form.htmlElectionInformation) }}
+{{ form_row(form.ballotPhysicalAddressLine1) }}
+{{ form_row(form.ballotPhysicalAddressLine2) }}
+{{ form_row(form.ballotPhysicalAddressCity) }}
+{{ form_row(form.ballotPhysicalAddressState) }}
+{{ form_row(form.ballotPhysicalAddressZipCode) }}
+{{ form_row(form.displayPhysicalAddress) }}
+{{ form_row(form.ballotMailingAddressLine1) }}
+{{ form_row(form.ballotMailingAddressLine2) }}
+{{ form_row(form.ballotMailingAddressCity) }}
+{{ form_row(form.ballotMailingAddressState) }}
+{{ form_row(form.ballotMailingAddressZipCode) }}
+{{ form_row(form.displayMailingAddress) }}
+{{ form_row(form.votesMin) }}
+{{ form_row(form.votesMax) }}
+{{ form_row(form.dateStart) }}
+{{ form_row(form.dateEnd) }}
+{{ form_row(form.votersTotal) }}
+{{ form_row(form.votersRequiredElection) }}
+{{ form_row(form.votersRequiredRatification) }}
+{{ form_row(form.votesMinPerBylaws) }}
+{{ form_row(form.votesMinPerStatute) }}
+{{ form_row(form.electionState) }}
+{{ form_row(form.allowWriteInCandidates) }}
+{{ form_row(form.allowProxyVoting) }}
+{{ form_row(form.allowProxyDirected) }}
+{{ form_row(form.allowProxyNondirected) }}
+
+<button class="btn btn-success btn-lg btn-block active">{{ button_label|default('Save Record') }}</button>
+{{ form_end(form) }}

@@ -1,0 +1,10 @@
+<fieldset>
+    <legend class="legend">{{ Legend|default('Contact Details') }}</legend>
+    {{ form_row(form.phoneHome.phoneHome) }}
+    {{ form_row(form.phoneMobile.phoneMobile) }}
+    {{ form_row(form.phoneWork.phoneWork) }}
+    {% if form.phoneFax.phoneFax is defined %}
+        {{ form_row(form.phoneFax.phoneFax) }}
+    {% endif %}
+    {{ form_row(form.email.email) }}
+</fieldset>

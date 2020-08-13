@@ -1,0 +1,47 @@
+
+
+
+
+Customer UIs
+--------------------------------------------
+
+Create Account
+Edit Account
+
+Create Company
+Edit Company
+
+Create Association
+Edit Association
+
+Add People to Association
+Edit People within Association
+
+Upload records Interface
+
+Login
+Dashboard - For All Elections which are under the User's pervue.
+
+
+
+
+
+
+
+
+
+
+
+Voter UIs
+--------------------------------------------
+
+Login
+Dashboard - If there is more than one election to vote in.
+Ballot
+Ballot Finalization
+
+
+
+
+
+

@@ -1,0 +1,85 @@
+hotkeys:
+  profile:
+    powershell:
+      - - Ctrl-P
+    cygwin:
+      - - Ctrl-T
+    git-bash:
+      - - Ctrl-G
+  shell: {}
+  paste:
+    - - Ctrl-Shift-V
+    - - Shift-Insert
+ssh: {}
+terminal:
+  colorScheme:
+    name: Material
+    foreground: '#eceff1'
+    background: 'rgba(38, 50, 56, 1)'
+    cursor: '#FFCC00'
+    colors:
+      - '#000000'
+      - '#D62341'
+      - '#9ECE58'
+      - '#FAED70'
+      - '#396FE2'
+      - '#BB80B3'
+      - '#2DDAFD'
+      - '#d0d0d0'
+      - 'rgba(255, 255, 255, 0.2)'
+      - '#FF5370'
+      - '#C3E88D'
+      - '#FFCB6B'
+      - '#82AAFF'
+      - '#C792EA'
+      - '#89DDFF'
+      - '#ffffff'
+  fontSize: 14
+  ligatures: true
+  cursor: beam
+  environment: {}
+  workingDirectory: 'C:\dev'
+  profiles:
+    - name: Cygwin-Test
+      sessionOptions:
+        command: 'C:\dev\cygwin\bin\bash.exe'
+        args: []
+        env:
+          TERM: cygwin
+          path: '%path%;C:\dev\cygwin\bin'
+        cwd: 'c:\dev'
+      level: Starting profile Cygwin-Test
+    - name: Profile-WSLUbuntu
+      sessionOptions:
+        command: 'C:\Windows\system32\wsl.exe'
+        args:
+          - '-d'
+          - Ubuntu
+        env: {}
+        runAsAdministrator: true
+        cwd: 'c:\dev'
+      level: Starting profile Default (WSL / Ubuntu)
+    - name: PowerShell
+      sessionOptions:
+        command: powershell.exe
+        args:
+          - '-nologo'
+        env:
+          TERM: cygwin
+      level: Starting profile PowerShell
+  bell: audible
+  copyOnSelect: true
+  profile: powershell
+  useConPTY: true
+  frontend: hterm
+appearance:
+  vibrancy: false
+  opacity: 1
+  frame: full
+  dock: 'off'
+  theme: Hype
+enableAnalytics: false
+enableWelcomeTab: false
+qc:
+  cmds: []
+titleControl: {}

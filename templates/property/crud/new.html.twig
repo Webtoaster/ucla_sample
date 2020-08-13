@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Property{% endblock %}
+
+{% block body %}
+    <h1>Create new Property</h1>
+
+    {{ include('property/_form.html.twig') }}
+
+    <a href="{{ path('crud_property_index') }}" class="btn btn-primary btn-lg btn-block active" role="button"
+       aria-disabled="true">Return to List</a>
+
+{% endblock %}

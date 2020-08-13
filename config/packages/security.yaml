@@ -1,0 +1,165 @@
+security:
+    encoders:
+        App\Entity\Person:
+            algorithm: 'auto'
+
+
+    access_control:
+        # require ROLE_ADMIN for /admin*
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+
+    role_hierarchy:
+        #   VOTER LEVEL
+        ROLE_VOTER:                               ROLE_USER
+        ROLE_VOTER_REVOKE_PROXY:                  ROLE_VOTER
+        ROLE_VOTER_ASSIGN_PROXY:                  ROLE_VOTER
+        ROLE_VOTER_ALL:                           [ROLE_VOTER, ROLE_VOTER_REVOKE_PROXY, ROLE_VOTER_ASSIGN_PROXY]
+        #   MEMBER LEVEL
+        ROLE_MEMBER:                              ROLE_USER
+        ROLE_MEMBER_VIEW:                         ROLE_MEMBER
+        ROLE_MEMBER_EDIT:                         ROLE_MEMBER
+        ROLE_MEMBER_DELETE:                       ROLE_MEMBER
+        ROLE_MEMBER_CREATE:                       ROLE_MEMBER
+        ROLE_GROUP_MEMBER_ALL:                    [ROLE_MEMBER, ROLE_MEMBER_REVOKE_PROXY, ROLE_MEMBER_ASSIGN_PROXY, ROLE_MEMBER_VOTE, ROLE_MEMBER_VIEW, ROLE_MEMBER_EDIT, ROLE_MEMBER_DELETE, ROLE_MEMBER_CREATE]
+        #   ELECTION LEVEL
+        ROLE_ELECTION:                            ROLE_USER
+        ROLE_ELECTION_VIEW_BALLOTS:               ROLE_ELECTION
+        ROLE_ELECTION_VIEW_RESULTS:               ROLE_ELECTION
+        ROLE_ELECTION_VIEW_AUDIT:                 ROLE_ELECTION
+        ROLE_ELECTION_VIEW_TALLY:                 ROLE_ELECTION
+        ROLE_ELECTION_VIEW_PROGRESS:              ROLE_ELECTION
+        ROLE_GROUP_ELECTION_VIEW_ALL:             [ROLE_ELECTION, ROLE_ELECTION_VIEW_BALLOTS, ROLE_ELECTION_VIEW_RESULTS, ROLE_ELECTION_VIEW_AUDIT, ROLE_ELECTION_VIEW_TALLY, ROLE_ELECTION_VIEW_PROGRESS]
+        #   Election Revocation of Ballots and Proxies
+        ROLE_ELECTION_REVOKE:                     ROLE_USER
+        ROLE_ELECTION_REVOKE_PROXY:               ROLE_ELECTION_REVOKE
+        ROLE_ELECTION_REVOKE_BALLOT:              ROLE_ELECTION_REVOKE
+        ROLE_GROUP_ELECTION_REVOKE_ALL:           [ROLE_ELECTION_REVOKE, ROLE_ELECTION_REVOKE_PROXY, ROLE_ELECTION_REVOKE_BALLOT]
+        #   Election Communication
+        ROLE_ELECTION_COMMUNICATE:                ROLE_USER
+        ROLE_ELECTION_EMAIL_SEND:                 ROLE_ELECTION_COMMUNICATE
+        ROLE_ELECTION_PRINT_MAILING_LABEL:        ROLE_ELECTION_COMMUNICATE
+        ROLE_ELECTION_PRINT_NOTICE:               ROLE_ELECTION_COMMUNICATE
+        ROLE_ELECTION_PRINT_PROXY:                ROLE_ELECTION_COMMUNICATE
+        ROLE_ELECTION_PRINT_BALLOT:               ROLE_ELECTION_COMMUNICATE
+        ROLE_ELECTION_PRINT_ALL:                  ROLE_ELECTION_COMMUNICATE
+        ROLE_GROUP_ELECTION_COMMUNICATE_ALL:      [ROLE_ELECTION_COMMUNICATE, ROLE_ELECTION_EMAIL_SEND, ROLE_ELECTION_PRINT_MAILING_LABEL, ROLE_ELECTION_PRINT_NOTICE, ROLE_ELECTION_PRINT_PROXY, ROLE_ELECTION_PRINT_BALLOT, ROLE_ELECTION_PRINT_ALL]
+        #   CANDIDATE LEVEL
+        ROLE_CANDIDATE:                           ROLE_USER
+        ROLE_CANDIDATE_VIEW:                      ROLE_CANDIDATE
+        ROLE_CANDIDATE_EDIT:                      ROLE_CANDIDATE
+        ROLE_CANDIDATE_DELETE:                    ROLE_CANDIDATE
+        ROLE_CANDIDATE_CREATE:                    ROLE_CANDIDATE
+        ROLE_GROUP_CANDIDATE_ALL:                 [ROLE_CANDIDATE, ROLE_CANDIDATE_VIEW, ROLE_CANDIDATE_EDIT, ROLE_CANDIDATE_DELETE, ROLE_CANDIDATE_CREATE]
+    
+        #   Tier 1 Election Elements
+        ROLE_ELECTION_VIEW:                       ROLE_ELECTION
+        ROLE_ELECTION_EDIT:                       ROLE_ELECTION
+        ROLE_ELECTION_DELETE:                     ROLE_ELECTION
+        ROLE_ELECTION_CREATE:                     ROLE_ELECTION
+        ROLE_GROUP_ELECTION_ALL:                  [ROLE_ELECTION, ROLE_ELECTION_VIEW, ROLE_ELECTION_EDIT, ROLE_ELECTION_DELETE, ROLE_ELECTION_CREATE, ROLE_GROUP_ELECTION_COMMUNICATE, ROLE_GROUP_ELECTION_REVOKE_ALL, ROLE_GROUP_ELECTION_VIEW_ALL]
+        #   OWNER LEVEL
+        ROLE_OWNER:                               ROLE_USER
+        ROLE_OWNER_VIEW:                          ROLE_OWNER
+        ROLE_OWNER_EDIT:                          ROLE_OWNER
+        ROLE_OWNER_DELETE:                        ROLE_OWNER
+        ROLE_OWNER_CREATE:                        ROLE_OWNER
+        ROLE_GROUP_OWNER_ALL:                     [ROLE_OWNER, ROLE_OWNER_VIEW, ROLE_OWNER_EDIT, ROLE_OWNER_DELETE, ROLE_OWNER_CREATE]
+        #   PROPERTY LEVEL
+        ROLE_PROPERTY:                            ROLE_USER
+        ROLE_PROPERTY_VIEW:                       ROLE_PROPERTY
+        ROLE_PROPERTY_EDIT:                       ROLE_PROPERTY
+        ROLE_PROPERTY_DELETE:                     ROLE_PROPERTY
+        ROLE_PROPERTY_CREATE:                     ROLE_PROPERTY
+        ROLE_GROUP_PROPERTY_ALL:                  [ROLE_PROPERTY, ROLE_PROPERTY_VIEW, ROLE_PROPERTY_EDIT, ROLE_PROPERTY_DELETE, ROLE_PROPERTY_CREATE]
+        #   USER LEVEL
+        ROLE_COMPANY_USER:                        ROLE_USER
+        ROLE_COMPANY_USER_VIEW:                   ROLE_COMPANY_USER
+        ROLE_COMPANY_USER_LIST:                   ROLE_COMPANY_USER
+        ROLE_COMPANY_USER_EDIT:                   ROLE_COMPANY_USER
+        ROLE_COMPANY_USER_DISABLE:                ROLE_COMPANY_USER
+        ROLE_COMPANY_USER_CREATE:                 ROLE_COMPANY_USER
+        ROLE_GROUP_COMPANY_USER_ALL:              [ROLE_COMPANY_USER_VIEW, ROLE_COMPANY_USER_LIST, ROLE_COMPANY_USER_EDIT, ROLE_COMPANY_USER_DISABLE, ROLE_COMPANY_USER_CREATE]
+        #   ASSOCIATION LEVEL
+        ROLE_ASSOCIATION:                         ROLE_USER
+        ROLE_ASSOCIATION_VIEW:                    ROLE_ASSOCIATION
+        ROLE_ASSOCIATION_EDIT:                    ROLE_ASSOCIATION
+        ROLE_ASSOCIATION_DELETE:                  ROLE_ASSOCIATION
+        ROLE_ASSOCIATION_CREATE:                  ROLE_ASSOCIATION
+        ROLE_GROUP_ASSOCIATION_ALL:               [ROLE_ASSOCIATION, ROLE_ASSOCIATION_VIEW, ROLE_ASSOCIATION_EDIT, ROLE_ASSOCIATION_DELETE, ROLE_ASSOCIATION_CREATE]
+        #   COMPANY LEVEL
+        ROLE_COMPANY:                             ROLE_USER
+        ROLE_COMPANY_VIEW:                        ROLE_COMPANY
+        ROLE_COMPANY_EDIT:                        ROLE_COMPANY
+        ROLE_COMPANY_DELETE:                      ROLE_COMPANY
+        ROLE_COMPANY_CREATE:                      ROLE_COMPANY
+        ROLE_GROUP_COMPANY_ALL:                   [ROLE_COMPANY, ROLE_COMPANY_VIEW, ROLE_COMPANY_EDIT, ROLE_COMPANY_DELETE, ROLE_COMPANY_CREATE]
+        #  TODO Thin these down later.
+        #   COMPANY LEVEL
+        ROLE_GROUP_COMPANY_MANAGER:                     [ROLE_VOTER_ALL, ROLE_GROUP_MEMBER_ALL, ROLE_GROUP_ELECTION_VIEW_ALL, ROLE_GROUP_ELECTION_REVOKE_ALL, ROLE_GROUP_ELECTION_COMMUNICATE_ALL, ROLE_GROUP_CANDIDATE_ALL, ROLE_GROUP_ELECTION_ALL, ROLE_GROUP_OWNER_ALL, ROLE_GROUP_PROPERTY_ALL, ROLE_GROUP_COMPANY_USER_ALL, ROLE_GROUP_ASSOCIATION_ALL, ROLE_GROUP_COMPANY_ALL]
+        ROLE_GROUP_COMPANY_OWNER:                       [ROLE_VOTER_ALL, ROLE_GROUP_MEMBER_ALL, ROLE_GROUP_ELECTION_VIEW_ALL, ROLE_GROUP_ELECTION_REVOKE_ALL, ROLE_GROUP_ELECTION_COMMUNICATE_ALL, ROLE_GROUP_CANDIDATE_ALL, ROLE_GROUP_ELECTION_ALL, ROLE_GROUP_OWNER_ALL, ROLE_GROUP_PROPERTY_ALL, ROLE_GROUP_COMPANY_USER_ALL, ROLE_GROUP_ASSOCIATION_ALL, ROLE_GROUP_COMPANY_ALL]
+        #   APP LEVEL
+        ROLE_GROUP_APP_CUSTOMER_SERVICE:                [ROLE_VOTER_ALL, ROLE_GROUP_MEMBER_ALL, ROLE_GROUP_ELECTION_VIEW_ALL, ROLE_GROUP_ELECTION_REVOKE_ALL, ROLE_GROUP_ELECTION_COMMUNICATE_ALL, ROLE_GROUP_CANDIDATE_ALL, ROLE_GROUP_ELECTION_ALL, ROLE_GROUP_OWNER_ALL, ROLE_GROUP_PROPERTY_ALL, ROLE_GROUP_COMPANY_USER_ALL, ROLE_GROUP_ASSOCIATION_ALL, ROLE_GROUP_COMPANY_ALL]
+        ROLE_GROUP_APP_CUSTOMER_SERVICE_SUPERVISOR:     [ROLE_VOTER_ALL, ROLE_GROUP_MEMBER_ALL, ROLE_GROUP_ELECTION_VIEW_ALL, ROLE_GROUP_ELECTION_REVOKE_ALL, ROLE_GROUP_ELECTION_COMMUNICATE_ALL, ROLE_GROUP_CANDIDATE_ALL, ROLE_GROUP_ELECTION_ALL, ROLE_GROUP_OWNER_ALL, ROLE_GROUP_PROPERTY_ALL, ROLE_GROUP_COMPANY_USER_ALL, ROLE_GROUP_ASSOCIATION_ALL, ROLE_GROUP_COMPANY_ALL]
+        ROLE_GROUP_APP_ADMIN:                           [ROLE_VOTER_ALL, ROLE_GROUP_MEMBER_ALL, ROLE_GROUP_ELECTION_VIEW_ALL, ROLE_GROUP_ELECTION_REVOKE_ALL, ROLE_GROUP_ELECTION_COMMUNICATE_ALL, ROLE_GROUP_CANDIDATE_ALL, ROLE_GROUP_ELECTION_ALL, ROLE_GROUP_OWNER_ALL, ROLE_GROUP_PROPERTY_ALL, ROLE_GROUP_COMPANY_USER_ALL, ROLE_GROUP_ASSOCIATION_ALL, ROLE_GROUP_COMPANY_ALL]
+        ROLE_SUPER_ADMIN:                               [ROLE_VOTER_ALL, ROLE_GROUP_MEMBER_ALL, ROLE_GROUP_ELECTION_VIEW_ALL, ROLE_GROUP_ELECTION_REVOKE_ALL, ROLE_GROUP_ELECTION_COMMUNICATE_ALL, ROLE_GROUP_CANDIDATE_ALL, ROLE_GROUP_ELECTION_ALL, ROLE_GROUP_OWNER_ALL, ROLE_GROUP_PROPERTY_ALL, ROLE_GROUP_COMPANY_USER_ALL, ROLE_GROUP_ASSOCIATION_ALL, ROLE_GROUP_COMPANY_ALL]
+
+    providers:
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class:    App\Entity\Person
+                property: email
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+            logout:
+                path:   app_logout
+                target: /
+
+        main:
+            anonymous:   true
+            guard:
+                authenticators:
+                    - App\Security\AppAuthenticator
+                #                    - App\Security\EmptyAuthenticator
+                #                    - App\Security\LoginAuthenticator
+                entry_point: App\Security\AppAuthenticator
+            form_login:
+                login_path:                          app_login
+                check_path:                          app_login
+                provider:                            app_user_provider
+                use_forward:                         false
+                username_parameter:                  _username
+                password_parameter:                  _password
+                post_only:                           true
+                always_use_default_target_path:      false        # changed this when I needed to perform a check on all users for compliance.
+                default_target_path:                 /login/authenticated
+
+
+                target_path_parameter:               _target_path
+                use_referer:                         false
+
+            security:    true  # TODO  true to test , false to ignore.
+
+            logout:
+                path:   app_logout
+                target: /
+            
+            remember_me:
+                secret:                      '%kernel.secret%'
+                lifetime:                    2592000 # 30 days in seconds
+                path:                        /
+                secure:                      false
+                remember_me_parameter:       _remember_me
+                always_remember_me:          true
+                token_provider:              'Symfony\Bridge\Doctrine\Security\RememberMe\DoctrineTokenProvider'
+
+#                XML
+#                PHP
+
+
+            switch_user: true
+            

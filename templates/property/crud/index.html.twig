@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Property index{% endblock %}
+
+{% block body %}
+    <h1>Property index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>PropertyId</th>
+            <th>ExtHoaPropertyId</th>
+            <th>ExtCadPropertyId</th>
+            <th>DateStart</th>
+            <th>DateEnd</th>
+            <th>PhysicalAddressLine1</th>
+            <th>PhysicalAddressLine2</th>
+            <th>PhysicalAddressCity</th>
+            <th>PhysicalAddressState</th>
+            <th>PhysicalAddressZipCode</th>
+            <th>LegalLot</th>
+            <th>LegalSection</th>
+            <th>LegalBlock</th>
+            <th>LegalDescription</th>
+            <th>UpdatedAt</th>
+            <th>CreatedAt</th>
+            <th>IsActive</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for property in properties %}
+            <tr>
+                <td>{{ property.propertyId }}</td>
+                <td>{{ property.extHoaPropertyId }}</td>
+                <td>{{ property.extCadPropertyId }}</td>
+                <td>{{ property.dateStart ? property.dateStart|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ property.dateEnd ? property.dateEnd|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ property.physicalAddressLine1 }}</td>
+                <td>{{ property.physicalAddressLine2 }}</td>
+                <td>{{ property.physicalAddressCity }}</td>
+                <td>{{ property.physicalAddressState }}</td>
+                <td>{{ property.physicalAddressZipCode }}</td>
+                <td>{{ property.legalLot }}</td>
+                <td>{{ property.legalSection }}</td>
+                <td>{{ property.legalBlock }}</td>
+                <td>{{ property.legalDescription }}</td>
+                <td>{{ property.updatedAt ? property.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ property.createdAt ? property.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ property.isActive ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('crud_property_show', {'propertyId': property.propertyId}) }}"
+                       class="btn btn-primary btn-lg btn-block active" role="button" aria-disabled="true">View
+                        Record</a>
+                    <a href="{{ path('crud_property_edit', {'propertyId': property.propertyId}) }}"
+                       class="btn btn-danger btn-lg btn-block active" role="button" aria-disabled="true">Edit Record</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="18">No Results from the Database.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('crud_property_new') }}"
+       class="btn btn-danger btn-lg btn-block active" role="button" aria-disabled="true">Delete Record</a>
+{% endblock %}

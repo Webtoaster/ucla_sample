@@ -1,0 +1,16 @@
+<fieldset>
+    <legend class="legend">Ballot Delivery Address</legend>
+    <ul>
+        <li>If the Ballot Delivery Address and Mailing Address are the same, then only one address will
+            appear on the Ballot.
+        </li>
+        <li>If there is not a Ballot Mailing Address, then the Ballot Delivery Address will be the only
+            address to appear on the Ballot.
+        </li>
+    </ul>
+    {{ form_row(form.physicalAddress.physicalAddressLine1) }}
+    {{ form_row(form.physicalAddress.physicalAddressLine2) }}
+    {{ form_row(form.physicalAddress.physicalAddressCity) }}
+    {{ form_row(form.physicalAddress.physicalAddressState) }}
+    {{ form_row(form.physicalAddress.physicalAddressZipCode) }}
+</fieldset>

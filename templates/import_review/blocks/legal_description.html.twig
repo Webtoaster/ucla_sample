@@ -1,0 +1,29 @@
+{% if
+    import.lot is empty and
+    import.block is empty and
+    import.subdivision is empty and
+    import.legalDescription is empty and
+    import.county %}<span class="font-weight-light  font-italic">(None Imported)</span>
+{% else %}
+    {% if import.lot is not empty %}
+        <div class="border-bottom font-weight-bold small">Lot:</div>
+        <div class="font-italic small pl-2">{{ import.lot }}</div>
+    {% endif %}
+    {% if import.block is not empty %}
+        <div class="border-bottom font-weight-bold small">Block:</div>
+        <div class="font-italic small pl-2">{{ import.block }}</div>
+    {% endif %}
+    {% if import.subdivision is not empty %}
+        <div class="border-bottom font-weight-bold small">Subdivision:</div>
+        <div class="font-italic small pl-2">{{ import.subdivision }}</div>
+    {% endif %}
+
+    {% if import.legalDescription is not empty %}
+        <div class="border-bottom font-weight-bold small">Legal Description:</div>
+        <div class="font-italic small pl-2">{{ import.legalDescription }}</div>
+    {% endif %}
+    {% if import.county is not empty %}
+        <div class="border-bottom font-weight-bold small">County:</div>
+        <div class="font-italic small pl-2">{{ import.county }}</div>
+    {% endif %}
+{% endif %}

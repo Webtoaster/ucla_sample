@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% if title is not defined %}
+    {% set page_title = 'DEFINE_BETTER' %}
+{% else %}
+    {% set page_title = title %}
+{% endif %}
+
+{% block title %}{{ parent() }} - {{ page_title }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {#	{{ encore_entry_link_tags('') }}#}
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="h3 mb-3 font-weight-normal">{{ page_title }}</h2>
+            </div>
+        </div>
+    </div>
+    <h1>Upload index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>UploadId</th>
+            <th>Filename</th>
+            <th>OriginalFilename</th>
+            <th>MimeType</th>
+            <th>CreatedFromIp</th>
+            <th>UpdatedFromIp</th>
+            <th>CreatedAt</th>
+            <th>UpdatedAt</th>
+            <th>IsActive</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for upload in uploads %}
+            <tr>
+                <td>{{ upload.uploadId }}</td>
+                <td>{{ upload.filename }}</td>
+                <td>{{ upload.originalFilename }}</td>
+                <td>{{ upload.mimeType }}</td>
+                <td>{{ upload.createdFromIp }}</td>
+                <td>{{ upload.updatedFromIp }}</td>
+                <td>{{ upload.createdAt ? upload.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ upload.updatedAt ? upload.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ upload.isActive ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('upload_show', {'uploadId': upload.uploadId}) }}"
+                       class="btn btn-primary btn-lg btn-block active" role="button" aria-disabled="true">View
+                        Record</a>
+                    <a href="{{ path('upload_edit', {'uploadId': upload.uploadId}) }}"
+                       class="btn btn-danger btn-lg btn-block active" role="button" aria-disabled="true">Edit Record</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">No Results from the Database.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('upload_new') }}"
+       class="btn btn-danger btn-lg btn-block active" role="button" aria-disabled="true">Delete Record</a>
+{% endblock %}

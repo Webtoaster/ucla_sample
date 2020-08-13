@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - {{ title|default(' Viewer') }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {#	{{ encore_entry_link_tags('') }}#}
+{% endblock %}
+
+{% block body %}
+    <h2 class="h3 mb-3 font-weight-normal">{{ title|default(' Viewer') }}</h2>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>UploadId</th>
+            <td>{{ upload.uploadId }}</td>
+        </tr>
+        <tr>
+            <th>FilePath</th>
+            <td>{{ upload.filePath }}</td>
+        </tr>
+        <tr>
+            <th>FileName</th>
+            <td>{{ upload.fileName }}</td>
+        </tr>
+        <tr>
+            <th>FileExtension</th>
+            <td>{{ upload.fileExtension }}</td>
+        </tr>
+        <tr>
+            <th>FileSize</th>
+            <td>{{ upload.fileSize }}</td>
+        </tr>
+        <tr>
+            <th>ImageWidth</th>
+            <td>{{ upload.imageWidth }}</td>
+        </tr>
+        <tr>
+            <th>ImageHeight</th>
+            <td>{{ upload.imageHeight }}</td>
+        </tr>
+        <tr>
+            <th>IsImage</th>
+            <td>{{ upload.isImage ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+            <th>UploadedBy</th>
+            <td>{{ upload.uploadedBy }}</td>
+        </tr>
+        <tr>
+            <th>UpdatedAt</th>
+            <td>{{ upload.updatedAt ? upload.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>CreatedAt</th>
+            <td>{{ upload.createdAt ? upload.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>IsActive</th>
+            <td>{{ upload.isActive ? 'Yes' : 'No' }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('crud_upload_index') }}" class="btn btn-primary btn-lg btn-block active" role="button"
+       aria-disabled="true">Return to List</a>
+
+
+    <a href="{{ path('crud_upload_edit', {'uploadId': upload.uploadId}) }}"
+       class="btn btn-danger btn-lg btn-block active" role="button" aria-disabled="true">Edit Record</a>
+
+    {{ include('upload/_delete_form.html.twig') }}
+{% endblock %}

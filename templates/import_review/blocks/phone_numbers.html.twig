@@ -1,0 +1,34 @@
+{% if
+    import.phoneHome is empty and
+    import.phoneMobile is empty and
+    import.phoneWork is empty and
+    import.phoneFax %}
+    <span class="font-weight-light align-middle font-italic">None Imported</span>
+{% else %}
+    <table class="table table-striped table-sm small">
+        {% if import.phoneHome is not empty %}
+            <tr class="border-0">
+                <th class="text-nowrap" scope="row">Home:</th>
+                <td class="text-nowrap">{{ import.phoneHome }}</td>
+            </tr>
+        {% endif %}
+        {% if import.phoneMobile is not empty %}
+            <tr class="border-0">
+                <th class="text-nowrap" scope="row">Mobile:</th>
+                <td class="text-nowrap">{{ import.phoneMobile }}</td>
+            </tr>
+        {% endif %}
+        {% if import.phoneWork is not empty %}
+            <tr class="border-0">
+                <th class="text-nowrap" scope="row">Work:</th>
+                <td class="text-nowrap">{{ import.phoneWork }}</td>
+            </tr>
+        {% endif %}
+        {% if import.phoneFax is not empty %}
+            <tr class="border-0">
+                <th class="text-nowrap" scope="row">Fax:</th>
+                <td class="text-nowrap">{{ import.phoneFax }}</td>
+            </tr>
+        {% endif %}
+    </table>
+{% endif %}

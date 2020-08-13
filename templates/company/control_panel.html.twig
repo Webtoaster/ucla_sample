@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - {{ title|default('Company Dashboard') }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {#	{{ encore_entry_link_tags('') }}#}
+{% endblock %}
+
+{% block body %}
+    <h2 class="h3 mb-3 font-weight-normal">{{ title|default('Company Dashboard') }}</h2>
+
+    {{ include('blocks/company_layout.html.twig') }}
+
+    {% if is_granted('ROLE_ASSOCIATION_CREATE') %}
+        <a href="{{ path('company_new') }}" class="btn btn-primary btn-lg btn-block active" role="button"
+           aria-disabled="true">Create New Company</a>
+    {% endif %}
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {#	{{ encore_entry_script_tags('') }}#}
+{% endblock %}

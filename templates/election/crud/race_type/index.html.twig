@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RaceType index{% endblock %}
+
+{% block body %}
+    <h1>RaceType index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>RaceTypeId</th>
+            <th>DescriptionShort</th>
+            <th>DescriptionLong</th>
+            <th>DisplayDescriptionLong</th>
+            <th>SortOrder</th>
+            <th>CreatedFromIp</th>
+            <th>UpdatedFromIp</th>
+            <th>CreatedAt</th>
+            <th>UpdatedAt</th>
+            <th>IsActive</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for race_type in race_types %}
+            <tr>
+                <td>{{ race_type.raceTypeId }}</td>
+                <td>{{ race_type.descriptionShort }}</td>
+                <td>{{ race_type.descriptionLong }}</td>
+                <td>{{ race_type.displayDescriptionLong ? 'Yes' : 'No' }}</td>
+                <td>{{ race_type.sortOrder }}</td>
+                <td>{{ race_type.createdFromIp }}</td>
+                <td>{{ race_type.updatedFromIp }}</td>
+                <td>{{ race_type.createdAt ? race_type.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ race_type.updatedAt ? race_type.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ race_type.isActive ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('race_type_show', {'raceTypeId': race_type.raceTypeId}) }}"
+                       class="btn btn-primary btn-lg btn-block active" role="button" aria-disabled="true">View
+                        Record</a>
+                    <a href="{{ path('race_type_edit', {'raceTypeId': race_type.raceTypeId}) }}"
+                       class="btn btn-danger btn-lg btn-block active" role="button" aria-disabled="true">Edit Record</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">No Results from the Database.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('race_type_new') }}"
+       class="btn btn-danger btn-lg btn-block active" role="button" aria-disabled="true">Delete Record</a>
+{% endblock %}

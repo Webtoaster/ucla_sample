@@ -1,0 +1,8 @@
+<fieldset>
+    <legend class="legend">{{ Legend|default('Billing Address') }}</legend>
+    {{ form_row(form.billingAddress.billingAddressLine1) }}
+    {{ form_row(form.billingAddress.billingAddressLine2) }}
+    {{ form_row(form.billingAddress.billingAddressCity) }}
+    {{ form_row(form.billingAddress.billingAddressState) }}
+    {{ form_row(form.billingAddress.billingAddressZipCode) }}
+</fieldset>

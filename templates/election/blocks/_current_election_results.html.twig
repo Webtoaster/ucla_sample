@@ -1,0 +1,27 @@
+{% if races is iterable %}
+	{% for race in races %}
+
+        <div class="row">
+            <div class="col-12">
+                There are not any Active Elections at this time.
+            </div>
+        </div>
+
+
+    {% endfor %}
+{% else %}
+
+<div class="row">
+    <div class="col-12">
+        There are not any Active Elections at this time.
+
+
+        {% if %}
+        <a href="{{ path('election_new') }}" class="btn btn-success btn-sm active">Create a New Election</a>
+
+
+    </div>
+</div>
+
+
+{% endif %}

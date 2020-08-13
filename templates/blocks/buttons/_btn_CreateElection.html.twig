@@ -1,0 +1,11 @@
+{% if is_granted('ROLE_CREATE_ELECTION') %}
+    <div class="blockElectionActionItems">
+        <div class="font-weight-bold">Actions:</div>
+        <ul>
+            {% if is_granted('ROLE_CREATE_ELECTION') %}
+                <li><a href="{{ path('election_new', {'association_id': association_id}) }}">Create Election</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+{% endif %}

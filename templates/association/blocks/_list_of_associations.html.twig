@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    {% if association is iterable %}
+        {% for association in associations %}
+            <div class="row justify-content-md-center">
+
+                <div class="col-5">
+                    {% if association.url is not empty %}
+                        <a href="{{ absolute_url(association.url) }}"
+                           target="external_association">{{ association.nameFormal }}</a>
+                    {% else %}
+                        {{ association.nameFormal }}
+                    {% endif %}
+
+                    {% if association.phoneWork is not empty %}
+                        <br/>
+                        <a href="tel:{{ association.phoneWork }}" class="text-nowrap"><i
+                                    class="fas fa-phone-square-alt"></i>&nbsp;{{ association.phoneWork }}</a>
+                    {% endif %}
+                </div>
+
+                <div class="col-md-auto">
+                    <a href="https://www.google.com/maps/search/?api=1&query={{ association.physicalAddressLine1|url_encode }}{{ ' '|url_encode }}{{ association.physicalAddressLine2|url_encode }}{{ ' '|url_encode }}{{ ' '|url_encode }}{{ association.physicalAddressCity|url_encode }}{{ ','|url_encode }}{{ association.physicalAddressState|url_encode }}{{ ' '|url_encode }}{{ association.physicalAddressZipCode|url_encode }}"
+                       target="external_association_map">Map It!</a>
+                </div>
+
+                <div class="col col-med-2">
+                    {{ association.physicalAddressCity }}
+                    , {{ association.physicalAddressState }} {{ association.physicalAddressZipCode }}
+                </div>
+
+                <div class="col col-lg-2">
+                    {% if is_granted('ROLE_ELECTION_VIEW')  and association.companyId > 0 %}
+                        <div id="election_link_{{ association.companyId }}" class="btn btn-primary btn-sm active"><i
+                                    class="fas fa-vote-yea"></i><a
+                                    href="{{ path('association_edit', {'association_id': association.companyId}) }}">Election
+                                Dashboard</a>
+                        </div>
+                    {% endif %}
+                    {% if is_granted('ROLE_PROPERTY_VIEW') and association.companyId > 0 %}
+                        <div id="election_link_{{ association.companyId }}" class="btn btn-primary btn-sm active"><a
+                                    href="{{ path('association_edit', {'association_id': association.companyId}) }}"><i
+                                        class="fas fa-home"></i>Property Dashboard</a>
+                        </div>
+                    {% endif %}
+                    {#					{% if is_granted('ROLE_PROPERTY_CREATE') and association.companyId > 0 %}#}
+                    {#						<div id="election_link_{{ association.companyId }}" class="btn btn-primary btn-sm active"><i class="fas fa-cloud-upload-alt"></i><a#}
+                    {#									href="{{ path('upload_property_file', {'association_id': association.companyId}) }}">Property Importer</a>#}
+                    {#						</div>#}
+                    {#					{% endif %}#}
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+</div>

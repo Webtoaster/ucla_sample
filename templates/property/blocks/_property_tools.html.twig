@@ -1,0 +1,41 @@
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('ui_property') }}
+{% endblock %}
+<h5>Property Management</h5>
+<ul>
+    <li><a href="{{ url('app_home') }}"
+           data-toggle="popover"
+           title=""
+           data-content="">View Current Properties</a>
+    </li>
+    <li><a href="{{ url('app_home') }}"
+           data-toggle="popover"
+           title=""
+           data-content="">Create New Property</a>
+    </li>
+    <li><a href="{{ url('app_home') }}"
+           data-toggle="popover"
+           title=""
+           data-content="">Import Properties</a>
+    </li>
+    <li><a href="{{ url('app_home') }}"
+           data-toggle="popover"
+           title=""
+           data-content="">Item 4</a>
+    </li>
+    <li><a href="{{ url('app_home') }}"
+           data-toggle="popover"
+           title=""
+           data-content="">Item 5</a>
+    </li>
+    <li><a href="{{ url('app_home') }}"
+           data-toggle="popover"
+           title=""
+           data-content="">Item 6</a>
+    </li>
+</ul>
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('app_property') }}
+{% endblock %}
